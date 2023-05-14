@@ -1,5 +1,5 @@
-import type { LinksFunction, LoaderArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { cssBundleHref } from "@remix-run/css-bundle";
+import type { MetaFunction, LinksFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -8,30 +8,22 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-
-import tailwindStylesheetUrl from "./styles/tailwind.css";
-import { getUser } from "./session.server";
+import styles from './styles/app.css';
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
-};
-
-export async function loader({ request }: LoaderArgs) {
-  return json({
-    user: await getUser(request),
-  });
+  return [{ rel: 'stylesheet', href: styles }]
 }
 
 export default function App() {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
