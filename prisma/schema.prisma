@@ -16,4 +16,23 @@ model User {
   updatedAt DateTime @updatedAt
   email     String   @unique
   password  String
+  profile   Profile
+  Recipe    Recipe[]
+}
+
+type Profile {
+  firstName String
+  lastName  String
+}
+
+model Recipe {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  steps       String[]
+  ingredients String[]
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String   @db.ObjectId
 }
