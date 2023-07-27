@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { getRecipe } from "~/utils/db.server";
+import { useState } from "react";
 
 export const loader: LoaderFunction = async ({ params }) => {
     const id = params.id as string;
