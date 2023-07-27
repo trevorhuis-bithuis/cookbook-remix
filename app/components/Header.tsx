@@ -24,8 +24,6 @@ const AccountLink = () => (
 export default function Header(props: HeaderProps) {
   const navigation = useNavigation();
 
-  console.log(navigation.location)
-
   const routes = [
     {
       name: "Search Recipes",
