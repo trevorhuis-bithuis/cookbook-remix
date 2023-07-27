@@ -11,7 +11,7 @@ import {
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { getAuth } from "@clerk/remix/ssr.server";
 import { ActionArgs, LoaderFunction, redirect } from "@remix-run/node";
-import { Form, useNavigate, useLoaderData, useSubmit } from "@remix-run/react";
+import { Form, useLoaderData, useSubmit } from "@remix-run/react";
 import { createRecipe } from "~/utils/db.server";
 
 export const loader: LoaderFunction = async (args) => {
@@ -35,21 +35,20 @@ export async function action({ request }: ActionArgs) {
     const formData = await request.formData();
     let values = Object.fromEntries(formData) as unknown as FormRequestValues;
 
-    await createRecipe(
+    const id = await createRecipe(
         values.title,
         values.description,
         (values.ingredients).split(","),
         (values.steps).split(","),
         (values.categories).split(","),
-        values.photoUrl,
-        '1'
+        values.photoUrl
     )
-    return {}
+
+    return redirect(`/recipes/${id}`)
 }
 
 const CreateRecipe = () => {
     const { userId } = useLoaderData<typeof loader>();
-    const navigate = useNavigate();
     const submit = useSubmit();
 
     const [title, setTitle] = useState<string>("");
@@ -87,24 +86,6 @@ const CreateRecipe = () => {
             action: $form.getAttribute("action") ?? $form.action,
         });
     }
-
-    // async function handleSave() {
-    //     const data = await fetch("/api/recipes", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             title,
-    //             description,
-    //             categories,
-    //             photo: imageUrl,
-    //             ingredients,
-    //             steps,
-    //             authorId: userId,
-    //         }),
-    //     });
-    //     const recipe = await data.json();
-
-    //     navigate(`/recipes/${recipe.id}`);
-    // }
 
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

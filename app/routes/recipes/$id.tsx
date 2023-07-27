@@ -39,7 +39,7 @@ export default function Recipe() {
                 </button>
             </div>
             <p className="text-md text-gray-500 mt-2">
-                Recipe by {recipe.authorId} | Published on {recipe.createdAt}
+                Published on {recipe.createdAt}
             </p>
             {recipe.categories.length > 0 && (
                 <div className="flex flex-wrap">

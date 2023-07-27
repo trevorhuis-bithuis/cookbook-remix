@@ -24,7 +24,7 @@ function buildConfig({ action, document = null, filter = null, projection = null
     return config;
 }
 
-async function createRecipe(title: string, description: string, ingredients: string[], steps: string[], categories: string[], photoUrl: string, authorId: string) {
+async function createRecipe(title: string, description: string, ingredients: string[], steps: string[], categories: string[], photoUrl: string) {
     const action = 'insertOne'
     const document = {
         title,
@@ -33,7 +33,6 @@ async function createRecipe(title: string, description: string, ingredients: str
         steps,
         categories,
         photoUrl,
-        authorId,
         createdAt: dayjs().format(),
         updatedAt: dayjs().format()
     }

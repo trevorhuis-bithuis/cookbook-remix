@@ -1193,7 +1193,7 @@ function buildConfig({ action: action2, document = null, filter = null, projecti
   };
   return document && (config.data.document = document), filter && (config.data.filter = filter), projection && (config.data.projection = projection), config;
 }
-async function createRecipe(title, description, ingredients, steps, categories, photoUrl, authorId) {
+async function createRecipe(title, description, ingredients, steps, categories, photoUrl) {
   let action2 = "insertOne", document = {
     title,
     description,
@@ -1201,7 +1201,6 @@ async function createRecipe(title, description, ingredients, steps, categories, 
     steps,
     categories,
     photoUrl,
-    authorId,
     createdAt: (0, import_dayjs.default)().format(),
     updatedAt: (0, import_dayjs.default)().format()
   }, config = buildConfig({ action: action2, document });
@@ -1223,19 +1222,18 @@ var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), loader2 = async
   return userId ? { userId } : (0, import_node.redirect)("/sign-in");
 };
 async function action({ request }) {
-  let formData = await request.formData(), values = Object.fromEntries(formData);
-  return await createRecipe(
+  let formData = await request.formData(), values = Object.fromEntries(formData), id = await createRecipe(
     values.title,
     values.description,
     values.ingredients.split(","),
     values.steps.split(","),
     values.categories.split(","),
-    values.photoUrl,
-    "1"
-  ), {};
+    values.photoUrl
+  );
+  return (0, import_node.redirect)(`/recipes/${id}`);
 }
 var CreateRecipe = () => {
-  let { userId } = (0, import_react7.useLoaderData)(), navigate = (0, import_react7.useNavigate)(), submit = (0, import_react7.useSubmit)(), [title, setTitle] = (0, import_react6.useState)(""), [categories, setCategories] = (0, import_react6.useState)([]), [description, setDescription] = (0, import_react6.useState)(""), [imageUrl, setImageUrl] = (0, import_react6.useState)(""), [ingredients, setIngredients] = (0, import_react6.useState)([""]), [steps, setSteps] = (0, import_react6.useState)([""]), [isLoading, setIsLoading] = (0, import_react6.useState)(!1);
+  let { userId } = (0, import_react7.useLoaderData)(), submit = (0, import_react7.useSubmit)(), [title, setTitle] = (0, import_react6.useState)(""), [categories, setCategories] = (0, import_react6.useState)([]), [description, setDescription] = (0, import_react6.useState)(""), [imageUrl, setImageUrl] = (0, import_react6.useState)(""), [ingredients, setIngredients] = (0, import_react6.useState)([""]), [steps, setSteps] = (0, import_react6.useState)([""]), [isLoading, setIsLoading] = (0, import_react6.useState)(!1);
   function handleCancel() {
     console.log("cancel");
   }
@@ -1251,13 +1249,13 @@ var CreateRecipe = () => {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react7.Form, { onSubmit: handleSubmit, method: "post", className: "space-y-8 divide-gray-200", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-lg font-medium leading-6 text-gray-900", children: "Create a New Recipe" }, void 0, !1, {
       fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 113,
+      lineNumber: 94,
       columnNumber: 21
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(TitleInput, { title, setTitle }, void 0, !1, {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 118,
+        lineNumber: 99,
         columnNumber: 25
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
@@ -1270,7 +1268,7 @@ var CreateRecipe = () => {
         !1,
         {
           fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 120,
+          lineNumber: 101,
           columnNumber: 25
         },
         this
@@ -1285,14 +1283,14 @@ var CreateRecipe = () => {
         !1,
         {
           fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 125,
+          lineNumber: 106,
           columnNumber: 25
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(StepsInput, { steps, setSteps }, void 0, !1, {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 130,
+        lineNumber: 111,
         columnNumber: 25
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
@@ -1305,19 +1303,19 @@ var CreateRecipe = () => {
         !1,
         {
           fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 132,
+          lineNumber: 113,
           columnNumber: 25
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(ImagesInput, { setImageUrl }, void 0, !1, {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 137,
+        lineNumber: 118,
         columnNumber: 25
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 117,
+      lineNumber: 98,
       columnNumber: 21
     }, this),
     imageUrl && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "items-center mx-auto", children: [
@@ -1331,23 +1329,23 @@ var CreateRecipe = () => {
         !1,
         {
           fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 143,
+          lineNumber: 124,
           columnNumber: 33
         },
         this
       ) }, void 0, !1, {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 142,
+        lineNumber: 123,
         columnNumber: 29
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-3 text-center sm:mt-5", children: "Upload successful" }, void 0, !1, {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 148,
+        lineNumber: 129,
         columnNumber: 29
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 141,
+      lineNumber: 122,
       columnNumber: 25
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
@@ -1360,22 +1358,22 @@ var CreateRecipe = () => {
       !1,
       {
         fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 151,
+        lineNumber: 132,
         columnNumber: 21
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 112,
+    lineNumber: 93,
     columnNumber: 17
   }, this) }, void 0, !1, {
     fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 111,
+    lineNumber: 92,
     columnNumber: 13
   }, this) }, void 0, !1, {
     fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 110,
+    lineNumber: 91,
     columnNumber: 9
   }, this);
 }, create_default = CreateRecipe;
@@ -1456,9 +1454,7 @@ function Recipe() {
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-md text-gray-500 mt-2", children: [
-      "Recipe by ",
-      recipe.authorId,
-      " | Published on ",
+      "Published on ",
       recipe.createdAt
     ] }, void 0, !0, {
       fileName: "app/routes/recipes/$id.tsx",
@@ -1720,7 +1716,7 @@ var Home = () => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { c
 }, this), routes_default = Home;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-GBVTQIWC.js", imports: ["/build/_shared/chunk-2GKD7THG.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-2ESBYQ42.js", imports: ["/build/_shared/chunk-PWH6FSCB.js", "/build/_shared/chunk-AZPTVSLY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-AWUFJ4ZE.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-LXZHZ5M3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-2IRX7CLK.js", imports: ["/build/_shared/chunk-KONDUBG3.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-ZWIVMYWX.js", imports: ["/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-3VWAADA7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-GSJS2YH5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "b43173cf", hmr: void 0, url: "/build/manifest-B43173CF.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-52G5LSIV.js", imports: ["/build/_shared/chunk-MA7PXXCU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HXOB63GP.js", imports: ["/build/_shared/chunk-G2XXMJUW.js", "/build/_shared/chunk-KGJ7GAAT.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ZCMA5ZVJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-LXZHZ5M3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-IB4LZVPG.js", imports: ["/build/_shared/chunk-KONDUBG3.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-QKSOXCOG.js", imports: ["/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-UT2XE7CV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-KEZKOYNX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "e69f42b9", hmr: void 0, url: "/build/manifest-E69F42B9.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !1, v2_headers: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
