@@ -14,7 +14,7 @@ export default function RecipeGrid(props: RecipeGridProps) {
     >
       {recipes.map((recipe) => (
         <li
-          key={recipe.id}
+          key={recipe._id}
           className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
         >
           <RecipeBox recipe={recipe} />

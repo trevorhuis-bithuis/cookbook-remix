@@ -42,7 +42,7 @@ export default function Recipe() {
             <p className="text-md text-gray-500 mt-2">
                 Published on {recipe.createdAt}
             </p>
-            {recipe.categories.length > 0 && (
+            {recipe.categories && recipe.categoires.length > 0 && (
                 <div className="flex flex-wrap">
                     {recipe.categories.map((category: any, index: number) => (
                         <div

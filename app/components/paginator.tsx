@@ -4,11 +4,10 @@ type paginatorProps = {
   length: number;
   page: number;
   setPage: (page: number) => void;
-  search: () => void;
 };
 
 export default function Paginator(props: paginatorProps) {
-  const { length, page, setPage, search } = props;
+  const { length, page, setPage } = props;
 
   return (
     <nav
@@ -26,10 +25,10 @@ export default function Paginator(props: paginatorProps) {
       </div>
       <div className="flex flex-1 justify-between sm:justify-end">
         <button
+          type="submit"
           onClick={() => {
             if (page > 1) {
               setPage(page - 1);
-              search();
             }
           }}
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
@@ -37,10 +36,10 @@ export default function Paginator(props: paginatorProps) {
           Previous
         </button>
         <button
+          type="submit"
           onClick={() => {
             if (page < length / 8) {
               setPage(page + 1);
-              search();
             }
           }}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"

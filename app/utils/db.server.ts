@@ -8,7 +8,8 @@ function buildConfig({
     projection = null,
     sort = null,
     limit = null,
-    skip = null
+    skip = null,
+    pipeline = null
 
 }: any
 ) {
@@ -33,6 +34,7 @@ function buildConfig({
     if (sort) config.data.sort = sort
     if (limit) config.data.limit = limit
     if (skip) config.data.skip = skip
+    if (pipeline) config.data.pipeline = pipeline
 
     return config;
 }
@@ -71,13 +73,27 @@ async function getRecipe(id: string) {
     };
 }
 
-async function searchRecipes() {
-    const action = 'findMany'
+async function searchRecipes(skip: number) {
+    const action = 'find'
+    const sort = { title: 1, _id: 1 }
 
-    const config = buildConfig({ action, limit: 10 })
+    const config = buildConfig({ action, sort, limit: 8, skip })
     const result = await axios(config)
 
+    if (skip > 0) console.log('skip', skip)
+    if (skip > 0) console.log(result.data.documents.map((recipe: any) => recipe.title))
     return result.data.documents;
 }
 
-export { getRecipe, searchRecipes, createRecipe };
+async function getRecipeCount() {
+    const action = 'aggregate'
+    const pipeline = [{
+        $count: "recipeCount"
+    }]
+    const config = buildConfig({ action, pipeline })
+    const result = await axios(config)
+
+    return result.data.documents[0].recipeCount;
+}
+
+export { getRecipe, searchRecipes, createRecipe, getRecipeCount };
