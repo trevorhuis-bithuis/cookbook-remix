@@ -1,10 +1,12 @@
 import clsx from "clsx";
-import { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { getRecipe } from "~/utils/db.server";
+import { ActionArgs, ActionFunction, redirect, type LoaderFunction, LoaderArgs } from "@remix-run/node";
+import { Form, Link, useLoaderData } from "@remix-run/react";
+import { getRecipe, deleteRecipe } from "~/utils/db.server";
+
+import DeleteRecipeModal from "~/components/deleteModal";
 import { useState } from "react";
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async ({ params }: LoaderArgs) => {
     const id = params.id as string;
 
     const recipe = await getRecipe(id);
@@ -12,8 +14,25 @@ export const loader: LoaderFunction = async ({ params }) => {
     return recipe;
 }
 
+export const action: ActionFunction = async ({ params, request }: ActionArgs) => {
+    const id = params.id as string;
+
+    const formData = await request.formData();
+    let { _action, ...values } = Object.fromEntries(formData);
+
+    if (_action === "_delete") {
+        await deleteRecipe(id);
+
+        return redirect("/recipes");
+    }
+
+    return redirect(`/recipes/${id}`);
+}
+
 export default function Recipe() {
     let recipe = useLoaderData();
+
+    const [openDelete, setOpenDelete] = useState<boolean>(false);
 
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2">
@@ -42,7 +61,7 @@ export default function Recipe() {
             <p className="text-md text-gray-500 mt-2">
                 Published on {recipe.createdAt}
             </p>
-            {recipe.categories && recipe.categoires.length > 0 && (
+            {recipe.categories && recipe.categories.length > 0 && (
                 <div className="flex flex-wrap">
                     {recipe.categories.map((category: any, index: number) => (
                         <div
@@ -82,30 +101,28 @@ export default function Recipe() {
                     </li>
                 ))}
             </ol>
-            {/* {userHasValidSession && recipeBelongsToUser && (
-                <div className="flex">
-                    <button
-                        type="button"
-                        className="inline-flex items-center rounded-md border border-transparent bg-gray-400 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
-                        onClick={() => editRecipe()}
-                    >
-                        Edit
-                    </button>
-                    <button
-                        type="button"
-                        className="inline-flex items-center rounded-md border border-transparent bg-red-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
-                        onClick={() => setOpenDelete(true)}
-                    >
-                        Delete
-                    </button>
-                </div>
-            )} 
-            <DeleteRecipeModal
-                open={openDelete}
-                setOpen={setOpenDelete}
-                itemToDelete={"Recipe"}
-                onDelete={deleteRecipe}
-            />*/}
+            <div className="flex">
+                <Link
+                    className="inline-flex items-center rounded-md border border-transparent bg-gray-400 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
+                    to={`/recipes/edit/${recipe._id}`}
+                >
+                    Edit
+                </Link>
+                <button
+                    type="button"
+                    className="inline-flex items-center rounded-md border border-transparent bg-red-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2"
+                    onClick={() => setOpenDelete(true)}
+                >
+                    Delete
+                </button>
+            </div>
+            <Form method="POST">
+                <DeleteRecipeModal
+                    open={openDelete}
+                    setOpen={setOpenDelete}
+                    itemToDelete={"Recipe"}
+                />
+            </Form>
         </div>
     );
 }

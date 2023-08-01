@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 type searchBarProps = {
   setSearchText: (searchText: string) => void;
   setSelectedCategory: (selectedCategory: string) => void;
+  categories: string[];
   page: number;
 };
 
 export default function SearchBar(props: searchBarProps) {
-  const { setSearchText, setSelectedCategory } = props;
-
-  const [categories, setCategories] = useState<string[]>([]);
+  const { setSearchText, setSelectedCategory, categories } = props;
 
   return (
     <div className="flex flex-col md:flex-row items-center">
@@ -27,7 +26,7 @@ export default function SearchBar(props: searchBarProps) {
           />
         </div>
       </div>
-      {/* <div className="mt-4 basis-1/4">
+      <div className="mt-4 basis-1/4">
         <label htmlFor="category" className="text-sm font-medium text-gray-700">
           Category
         </label>
@@ -44,7 +43,7 @@ export default function SearchBar(props: searchBarProps) {
             </option>
           ))}
         </select>
-      </div> */}
+      </div>
 
       <div className="mt-10 basis-1/4">
         <button
