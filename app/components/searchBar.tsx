@@ -2,17 +2,15 @@ import { useState, useEffect } from "react";
 
 type searchBarProps = {
   setSearchText: (searchText: string) => void;
-  setSelectedCategory: (selectedCategory: string) => void;
-  categories: string[];
   page: number;
 };
 
 export default function SearchBar(props: searchBarProps) {
-  const { setSearchText, setSelectedCategory, categories } = props;
+  const { setSearchText } = props;
 
   return (
     <div className="flex flex-col md:flex-row items-center">
-      <div className="mt-4 basis-1/2 mx-2">
+      <div className="mt-4 basis-3/4 mx-2">
         <label htmlFor="search" className="text-sm font-medium text-gray-700">
           Search
         </label>
@@ -25,24 +23,6 @@ export default function SearchBar(props: searchBarProps) {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
-      </div>
-      <div className="mt-4 basis-1/4">
-        <label htmlFor="category" className="text-sm font-medium text-gray-700">
-          Category
-        </label>
-        <select
-          id="category"
-          name="category"
-          className="w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option value="all">All</option>
-          {categories!.map((category, index) => (
-            <option key={index} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
       </div>
 
       <div className="mt-10 basis-1/4">

@@ -63,7 +63,7 @@ __export(root_exports, {
 var import_react4 = require("@remix-run/react"), import_ssr = require("@clerk/remix/ssr.server"), import_remix2 = require("@clerk/remix");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-HNRSFDJG.css";
+var tailwind_default = "/build/_assets/tailwind-255Y4MFR.css";
 
 // app/components/Header.tsx
 var import_react2 = require("@headlessui/react"), import_outline = require("@heroicons/react/24/outline"), import_react3 = require("@remix-run/react"), import_remix = require("@clerk/remix"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
@@ -80,27 +80,23 @@ var SigninLink = () => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(impor
   columnNumber: 3
 }, this);
 function Header(props) {
-  var _a, _b, _c, _d;
+  var _a, _b;
   let navigation = (0, import_react3.useNavigation)(), routes2 = [
     {
       name: "Search Recipes",
       href: "/recipes/search",
       current: ((_a = navigation.location) == null ? void 0 : _a.pathname) === "/recipes/search"
-    },
-    {
-      name: "Menus",
-      href: "/menus",
-      current: ((_b = navigation.location) == null ? void 0 : _b.pathname) === "/menus"
     }
+    // {
+    //   name: "Menus",
+    //   href: "/menus",
+    //   current: navigation.location?.pathname === "/menus",
+    // },
   ];
   return routes2.push({
     name: "Create Recipe",
     href: "/recipes/create",
-    current: ((_c = navigation.location) == null ? void 0 : _c.pathname) === "/recipes/create"
-  }), routes2.push({
-    name: "Create Menu",
-    href: "/menus/create",
-    current: ((_d = navigation.location) == null ? void 0 : _d.pathname) === "/menus/create"
+    current: ((_b = navigation.location) == null ? void 0 : _b.pathname) === "/recipes/create"
   }), /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Disclosure, { as: "nav", className: "bg-gray-800", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "mx-auto max-w-7xl px-2 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "relative flex h-16 items-center justify-between", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute inset-y-0 left-0 flex items-center sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Disclosure.Button, { className: "inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white", children: [
@@ -1241,47 +1237,6 @@ async function getRecipe(id) {
     createdAt: (0, import_dayjs.default)(result.data.document.createdAt).format("MMMM DD, YYYY")
   };
 }
-async function searchRecipes(searchText, selectedCategory, skip) {
-  let configBuild = {
-    action: "find",
-    sort: { title: 1, _id: 1 },
-    skip,
-    limit: 8
-  };
-  selectedCategory !== "All" && (configBuild.filter = { categories: selectedCategory }), searchText !== "" && (configBuild.filter = {
-    ...configBuild.filter,
-    $text: {
-      $search: searchText
-    }
-  });
-  let config = buildConfig(configBuild), result = await (0, import_axios.default)(config);
-  return skip > 0 && console.log("skip", skip), skip > 0 && console.log(result.data.documents.map((recipe) => recipe.title)), result.data.documents;
-}
-async function getRecipes(skip) {
-  let config = buildConfig({ action: "find", sort: { title: 1, _id: 1 }, skip, limit: 8 });
-  return (await (0, import_axios.default)(config)).data.documents;
-}
-async function getRecipesByCategory(category, skip) {
-  let config = buildConfig({ action: "find", sort: { title: 1, _id: 1 }, filter: {
-    categories: category
-  }, skip, limit: 8 });
-  return (await (0, import_axios.default)(config)).data.documents;
-}
-async function getRecipeCount() {
-  let config = buildConfig({ action: "aggregate", pipeline: [{
-    $count: "recipeCount"
-  }] });
-  return (await (0, import_axios.default)(config)).data.documents[0].recipeCount;
-}
-async function getCategories() {
-  let config = buildConfig({ action: "aggregate", pipeline: [{
-    $group: {
-      _id: null,
-      categories: { $addToSet: "$categories" }
-    }
-  }] });
-  return (await (0, import_axios.default)(config)).data.documents[0].categories[0];
-}
 async function deleteRecipe(id) {
   let config = buildConfig({ action: "deleteOne", filter: {
     _id: { $oid: id }
@@ -1794,12 +1749,12 @@ function RecipeGrid(props) {
 // app/components/searchBar.tsx
 var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime");
 function SearchBar(props) {
-  let { setSearchText, setSelectedCategory, categories } = props;
+  let { setSearchText } = props;
   return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "flex flex-col md:flex-row items-center", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-4 basis-1/2 mx-2", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-4 basis-3/4 mx-2", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("label", { htmlFor: "search", className: "text-sm font-medium text-gray-700", children: "Search" }, void 0, !1, {
         fileName: "app/components/searchBar.tsx",
-        lineNumber: 16,
+        lineNumber: 14,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
@@ -1815,58 +1770,18 @@ function SearchBar(props) {
         !1,
         {
           fileName: "app/components/searchBar.tsx",
-          lineNumber: 20,
+          lineNumber: 18,
           columnNumber: 11
         },
         this
       ) }, void 0, !1, {
         fileName: "app/components/searchBar.tsx",
-        lineNumber: 19,
+        lineNumber: 17,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/searchBar.tsx",
-      lineNumber: 15,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-4 basis-1/4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("label", { htmlFor: "category", className: "text-sm font-medium text-gray-700", children: "Category" }, void 0, !1, {
-        fileName: "app/components/searchBar.tsx",
-        lineNumber: 30,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
-        "select",
-        {
-          id: "category",
-          name: "category",
-          className: "w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md",
-          onChange: (e) => setSelectedCategory(e.target.value),
-          children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("option", { value: "all", children: "All" }, void 0, !1, {
-              fileName: "app/components/searchBar.tsx",
-              lineNumber: 39,
-              columnNumber: 11
-            }, this),
-            categories.map((category, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("option", { value: category, children: category }, index, !1, {
-              fileName: "app/components/searchBar.tsx",
-              lineNumber: 41,
-              columnNumber: 13
-            }, this))
-          ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/searchBar.tsx",
-          lineNumber: 33,
-          columnNumber: 9
-        },
-        this
-      )
-    ] }, void 0, !0, {
-      fileName: "app/components/searchBar.tsx",
-      lineNumber: 29,
+      lineNumber: 13,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-10 basis-1/4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
@@ -1880,96 +1795,116 @@ function SearchBar(props) {
       !1,
       {
         fileName: "app/components/searchBar.tsx",
-        lineNumber: 49,
+        lineNumber: 29,
         columnNumber: 9
       },
       this
     ) }, void 0, !1, {
       fileName: "app/components/searchBar.tsx",
-      lineNumber: 48,
+      lineNumber: 28,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/searchBar.tsx",
-    lineNumber: 14,
+    lineNumber: 12,
     columnNumber: 5
   }, this);
 }
 
+// app/utils/search.server.ts
+var import_axios2 = __toESM(require("axios"));
+async function getRecipes(skip) {
+  let config = buildConfig({ action: "find", sort: { title: 1, _id: 1 }, skip, limit: 8 });
+  return (await (0, import_axios2.default)(config)).data.documents;
+}
+async function getRecipeCount() {
+  let config = buildConfig({ action: "aggregate", pipeline: [{
+    $count: "recipeCount"
+  }] });
+  return (await (0, import_axios2.default)(config)).data.documents[0].recipeCount;
+}
+async function searchRecipes(search, category, skip) {
+  let config = buildConfig({ action: "aggregate", pipeline: [{
+    $search: {
+      index: "default",
+      text: {
+        query: search,
+        path: {
+          wildcard: "*"
+        }
+      },
+      sort: { title: 1, _id: 1 },
+      count: {
+        type: "total"
+      }
+    }
+  }], skip, category });
+  return (await (0, import_axios2.default)(config)).data.documents;
+}
+
 // app/routes/recipes/search.tsx
 var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), loader4 = async ({ params }) => {
-  let recipes = await getRecipes(0), recipeCount = await getRecipeCount(), categories = await getCategories();
-  return { recipes, recipeCount, categories };
+  let recipes = await getRecipes(0), recipeCount = await getRecipeCount();
+  return { recipes, recipeCount };
 }, action3 = async ({ request }) => {
   let formData = await request.formData(), values = Object.fromEntries(formData), skip = (parseInt(values.page) - 1) * 8;
-  if (values.searchText === "" && values.selectedCategory === "All") {
+  if (values.searchText === "") {
     let recipes2 = await getRecipes(skip), recipeCount2 = await getRecipeCount();
-    return { recipes: recipes2, recipeCount: recipeCount2 };
-  }
-  if (values.searchText === "" && values.selectedCategory !== "All") {
-    let recipes2 = await getRecipesByCategory(values.selectedCategory, skip), recipeCount2 = await getRecipeCount();
-    return { recipes: recipes2, recipeCount: recipeCount2 };
+    return { recipes: recipes2, recipeCount: recipeCount2, shouldShowPaginator: !0 };
   }
   let recipes = await searchRecipes(values.searchText, values.selectedCategory, skip), recipeCount = await getRecipeCount();
-  return { recipes, recipeCount };
+  return { recipes, recipeCount, shouldShowPaginator: !1 };
 }, Recipes = () => {
-  let { recipes, recipeCount, categories } = (0, import_react11.useLoaderData)(), actionData = (0, import_react11.useActionData)();
+  let { recipes, recipeCount } = (0, import_react11.useLoaderData)(), actionData = (0, import_react11.useActionData)();
   actionData && (recipes = actionData.recipes, recipeCount = actionData.recipeCount);
-  let [page, setPage] = (0, import_react12.useState)(1), [searchText, setSearchText] = (0, import_react12.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react12.useState)("All");
+  let [page, setPage] = (0, import_react12.useState)(1), [searchText, setSearchText] = (0, import_react12.useState)("");
   return /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_react11.Form, { method: "post", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("input", { name: "page", value: page, hidden: !0, readOnly: !0 }, void 0, !1, {
       fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 58,
+      lineNumber: 49,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("input", { name: "searchText", value: searchText, hidden: !0, readOnly: !0 }, void 0, !1, {
       fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 59,
-      columnNumber: 17
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("input", { name: "selectedCategory", value: selectedCategory, hidden: !0, readOnly: !0 }, void 0, !1, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 60,
+      lineNumber: 50,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("p", { className: "text-xl mt-6", children: "Recipes" }, void 0, !1, {
       fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 61,
+      lineNumber: 51,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(
       SearchBar,
       {
         setSearchText,
-        setSelectedCategory,
-        page,
-        categories
+        page
       },
       void 0,
       !1,
       {
         fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 62,
+        lineNumber: 52,
         columnNumber: 17
       },
       this
     ),
     recipeCount === 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("p", { className: "text-xl mt-6", children: "No recipes found" }, void 0, !1, {
       fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 70,
+      lineNumber: 58,
       columnNumber: 21
     }, this),
     recipeCount > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_jsx_dev_runtime18.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: "py-4 mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(RecipeGrid, { recipes }, void 0, !1, {
         fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 75,
+        lineNumber: 63,
         columnNumber: 29
       }, this) }, void 0, !1, {
         fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 74,
+        lineNumber: 62,
         columnNumber: 25
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(
+      searchText === "" && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(
         Paginator,
         {
           page,
@@ -1980,23 +1915,23 @@ var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), loader4 = async
         !1,
         {
           fileName: "app/routes/recipes/search.tsx",
-          lineNumber: 79,
-          columnNumber: 25
+          lineNumber: 66,
+          columnNumber: 48
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 73,
+      lineNumber: 61,
       columnNumber: 21
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/recipes/search.tsx",
-    lineNumber: 57,
+    lineNumber: 48,
     columnNumber: 13
   }, this) }, void 0, !1, {
     fileName: "app/routes/recipes/search.tsx",
-    lineNumber: 56,
+    lineNumber: 47,
     columnNumber: 9
   }, this);
 }, search_default = Recipes;
@@ -2598,7 +2533,7 @@ var Home = () => /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { c
 }, this), routes_default = Home;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-XPHG4IV3.js", imports: ["/build/_shared/chunk-Q2NKTYVS.js", "/build/_shared/chunk-CCMC25PN.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-REDRGO5Z.js", imports: ["/build/_shared/chunk-TLLKLDIT.js", "/build/_shared/chunk-GBIVASQL.js", "/build/_shared/chunk-L7L27XNQ.js", "/build/_shared/chunk-LBPVCQET.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-LZ6FJAZT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-LXZHZ5M3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-PJ43JDPV.js", imports: ["/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-RQU6PAJN.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/edit/$id": { id: "routes/recipes/edit/$id", parentId: "root", path: "recipes/edit/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/edit/$id-MTHKNJOI.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-G7CHZRZX.js", "/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/search": { id: "routes/recipes/search", parentId: "root", path: "recipes/search", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/search-3MAJPPS5.js", imports: ["/build/_shared/chunk-KONDUBG3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-RF7OXWP4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-5VWXYFOC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "09faf3f1", hmr: void 0, url: "/build/manifest-09FAF3F1.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-XPHG4IV3.js", imports: ["/build/_shared/chunk-Q2NKTYVS.js", "/build/_shared/chunk-CCMC25PN.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-6HB4C3JY.js", imports: ["/build/_shared/chunk-TLLKLDIT.js", "/build/_shared/chunk-GBIVASQL.js", "/build/_shared/chunk-L7L27XNQ.js", "/build/_shared/chunk-LBPVCQET.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-LZ6FJAZT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-LXZHZ5M3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-ECWLPRXD.js", imports: ["/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-QQIOZWIR.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/edit/$id": { id: "routes/recipes/edit/$id", parentId: "root", path: "recipes/edit/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/edit/$id-KDX22QIR.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/search": { id: "routes/recipes/search", parentId: "root", path: "recipes/search", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/search-M7XARU6F.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-RF7OXWP4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-5VWXYFOC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "2f17d5c4", hmr: void 0, url: "/build/manifest-2F17D5C4.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !1, v2_headers: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

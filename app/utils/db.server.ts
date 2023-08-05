@@ -10,8 +10,7 @@ function buildConfig({
     sort = null,
     limit = null,
     skip = null,
-    pipeline = null
-
+    pipeline = null,
 }: any
 ) {
     let config: any = {
@@ -100,87 +99,6 @@ async function getRecipe(id: string) {
     };
 }
 
-async function searchRecipes(searchText: string, selectedCategory: string, skip: number) {
-    const action = 'find'
-    const sort = { title: 1, _id: 1 }
-
-    const configBuild: any = {
-        action,
-        sort,
-        skip,
-        limit: 8,
-    }
-
-    if (selectedCategory !== 'All') {
-        configBuild.filter = { categories: selectedCategory }
-    }
-
-    if (searchText !== '') {
-        configBuild.filter = {
-            ...configBuild.filter,
-            $text: {
-                $search: searchText
-            }
-        }
-    }
-
-
-    const config = buildConfig(configBuild)
-    const result = await axios(config)
-
-    if (skip > 0) console.log('skip', skip)
-    if (skip > 0) console.log(result.data.documents.map((recipe: any) => recipe.title))
-    return result.data.documents;
-}
-
-async function getRecipes(skip: number) {
-    const action = 'find'
-    const sort = { title: 1, _id: 1 }
-
-    const config = buildConfig({ action, sort, skip, limit: 8 })
-    const result = await axios(config)
-
-    return result.data.documents;
-}
-
-async function getRecipesByCategory(category: string, skip: number) {
-    const action = 'find'
-    const sort = { title: 1, _id: 1 }
-    const filter = {
-        categories: category
-    }
-
-    const config = buildConfig({ action, sort, filter, skip, limit: 8 })
-    const result = await axios(config)
-
-    return result.data.documents;
-}
-
-async function getRecipeCount() {
-    const action = 'aggregate'
-    const pipeline = [{
-        $count: "recipeCount"
-    }]
-    const config = buildConfig({ action, pipeline })
-    const result = await axios(config)
-
-    return result.data.documents[0].recipeCount;
-}
-
-async function getCategories() {
-    const action = 'aggregate'
-    const pipeline = [{
-        $group: {
-            _id: null,
-            categories: { $addToSet: "$categories" }
-        }
-    }]
-    const config = buildConfig({ action, pipeline })
-    const result = await axios(config)
-
-    return result.data.documents[0].categories[0];
-}
-
 async function deleteRecipe(id: string) {
     const action = 'deleteOne'
     const filter = {
@@ -193,4 +111,4 @@ async function deleteRecipe(id: string) {
     return result.data.deletedCount;
 }
 
-export { getRecipe, getRecipes, getRecipesByCategory, searchRecipes, createRecipe, getRecipeCount, getCategories, deleteRecipe, updateRecipe };
+export { getRecipe, createRecipe, deleteRecipe, updateRecipe, buildConfig };

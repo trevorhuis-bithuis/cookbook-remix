@@ -4,13 +4,12 @@ import { useState } from "react";
 import Paginator from "~/components/paginator";
 import RecipeGrid from "~/components/recipeGrid";
 import SearchBar from "~/components/searchBar";
-import { getCategories, getRecipeCount, searchRecipes, getRecipes, getRecipesByCategory } from "~/utils/db.server";
+import { getRecipeCount, getRecipes, searchRecipes } from "~/utils/search.server";
 
 export const loader: LoaderFunction = async ({ params }) => {
     const recipes = await getRecipes(0);
     const recipeCount = await getRecipeCount();
-    const categories = await getCategories();
-    return { recipes, recipeCount, categories };
+    return { recipes, recipeCount };
 }
 
 export const action: ActionFunction = async ({ request }: ActionArgs) => {
@@ -19,28 +18,21 @@ export const action: ActionFunction = async ({ request }: ActionArgs) => {
 
     const skip = (parseInt(values.page as string) - 1) * 8;
 
-    if (values.searchText === "" && values.selectedCategory === "All") {
+    if (values.searchText === "") {
         const recipes = await getRecipes(skip);
         const recipeCount = await getRecipeCount();
 
-        return { recipes, recipeCount }
-    }
-
-    if (values.searchText === "" && values.selectedCategory !== "All") {
-        const recipes = await getRecipesByCategory(values.selectedCategory as string, skip);
-        const recipeCount = await getRecipeCount();
-
-        return { recipes, recipeCount }
+        return { recipes, recipeCount, shouldShowPaginator: true }
     }
 
     const recipes = await searchRecipes(values.searchText as string, values.selectedCategory as string, skip);
     const recipeCount = await getRecipeCount();
 
-    return { recipes, recipeCount }
+    return { recipes, recipeCount, shouldShowPaginator: false }
 }
 
 const Recipes = () => {
-    let { recipes, recipeCount, categories } = useLoaderData();
+    let { recipes, recipeCount } = useLoaderData();
     const actionData = useActionData();
 
     if (actionData) {
@@ -50,20 +42,16 @@ const Recipes = () => {
 
     const [page, setPage] = useState(1);
     const [searchText, setSearchText] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
 
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <Form method="post">
                 <input name="page" value={page} hidden readOnly />
                 <input name="searchText" value={searchText} hidden readOnly />
-                <input name="selectedCategory" value={selectedCategory} hidden readOnly />
                 <p className="text-xl mt-6">Recipes</p>
                 <SearchBar
                     setSearchText={setSearchText}
-                    setSelectedCategory={setSelectedCategory}
                     page={page}
-                    categories={categories}
                 />
 
                 {recipeCount === 0 && (
@@ -75,12 +63,12 @@ const Recipes = () => {
                             <RecipeGrid recipes={recipes} />
                         </div>
 
-
-                        <Paginator
+                        {searchText === "" && (<Paginator
                             page={page}
                             setPage={setPage}
                             length={recipeCount}
-                        />
+                        />)}
+
                     </>
                 )}
             </Form>

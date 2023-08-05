@@ -30,11 +30,11 @@ export default function Header(props: HeaderProps) {
       href: "/recipes/search",
       current: navigation.location?.pathname === "/recipes/search",
     },
-    {
-      name: "Menus",
-      href: "/menus",
-      current: navigation.location?.pathname === "/menus",
-    },
+    // {
+    //   name: "Menus",
+    //   href: "/menus",
+    //   current: navigation.location?.pathname === "/menus",
+    // },
   ];
 
 
@@ -43,11 +43,11 @@ export default function Header(props: HeaderProps) {
     href: "/recipes/create",
     current: navigation.location?.pathname === "/recipes/create",
   });
-  routes.push({
-    name: "Create Menu",
-    href: "/menus/create",
-    current: navigation.location?.pathname === "/menus/create",
-  });
+  // routes.push({
+  //   name: "Create Menu",
+  //   href: "/menus/create",
+  //   current: navigation.location?.pathname === "/menus/create",
+  // });
 
 
   return (
