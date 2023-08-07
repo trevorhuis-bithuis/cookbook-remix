@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -21,9 +22,17 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 )), __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
 
-// <stdin>
-var stdin_exports = {};
-__export(stdin_exports, {
+// server.js
+var server_exports = {};
+__export(server_exports, {
+  default: () => server_default
+});
+module.exports = __toCommonJS(server_exports);
+var import_vercel = require("@remix-run/vercel");
+
+// server-entry-module:@remix-run/dev/server-build
+var server_build_exports = {};
+__export(server_build_exports, {
   assets: () => assets_manifest_default,
   assetsBuildDirectory: () => assetsBuildDirectory,
   entry: () => entry,
@@ -31,20 +40,15 @@ __export(stdin_exports, {
   publicPath: () => publicPath,
   routes: () => routes
 });
-module.exports = __toCommonJS(stdin_exports);
 
 // app/entry.server.tsx
 var entry_server_exports = {};
 __export(entry_server_exports, {
   default: () => handleRequest
 });
-var import_server = require("react-dom/server"), import_react = require("@remix-run/react"), import_jsx_dev_runtime = require("react/jsx-dev-runtime");
+var import_server = require("react-dom/server"), import_react = require("@remix-run/react"), import_jsx_runtime = require("react/jsx-runtime");
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext) {
-  let markup = (0, import_server.renderToString)(/* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react.RemixServer, { context: remixContext, url: request.url }, void 0, !1, {
-    fileName: "app/entry.server.tsx",
-    lineNumber: 11,
-    columnNumber: 33
-  }, this));
+  let markup = (0, import_server.renderToString)(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.RemixServer, { context: remixContext, url: request.url }));
   return responseHeaders.set("Content-Type", "text/html"), new Response("<!DOCTYPE html>" + markup, {
     status: responseStatusCode,
     headers: responseHeaders
@@ -63,22 +67,14 @@ __export(root_exports, {
 var import_react4 = require("@remix-run/react"), import_ssr = require("@clerk/remix/ssr.server"), import_remix2 = require("@clerk/remix");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-255Y4MFR.css";
+var tailwind_default = "/build/_assets/tailwind-EU36KT5K.css";
 
 // app/components/Header.tsx
-var import_react2 = require("@headlessui/react"), import_outline = require("@heroicons/react/24/outline"), import_react3 = require("@remix-run/react"), import_remix = require("@clerk/remix"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
+var import_react2 = require("@headlessui/react"), import_outline = require("@heroicons/react/24/outline"), import_react3 = require("@remix-run/react"), import_remix = require("@clerk/remix"), import_jsx_runtime2 = require("react/jsx-runtime");
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-var SigninLink = () => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react3.Link, { to: "/sign-in", className: "hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium", children: "Sign In" }, void 0, !1, {
-  fileName: "app/components/Header.tsx",
-  lineNumber: 15,
-  columnNumber: 3
-}, this), AccountLink = () => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_remix.UserButton, {}, void 0, !1, {
-  fileName: "app/components/Header.tsx",
-  lineNumber: 21,
-  columnNumber: 3
-}, this);
+var SigninLink = () => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react3.Link, { to: "/sign-in", className: "hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium", children: "Sign In" }), AccountLink = () => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_remix.UserButton, {});
 function Header(props) {
   var _a, _b;
   let navigation = (0, import_react3.useNavigation)(), routes2 = [
@@ -97,34 +93,14 @@ function Header(props) {
     name: "Create Recipe",
     href: "/recipes/create",
     current: ((_b = navigation.location) == null ? void 0 : _b.pathname) === "/recipes/create"
-  }), /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Disclosure, { as: "nav", className: "bg-gray-800", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "mx-auto max-w-7xl px-2 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "relative flex h-16 items-center justify-between", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute inset-y-0 left-0 flex items-center sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Disclosure.Button, { className: "inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "sr-only", children: " Open main menu " }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 62,
-          columnNumber: 19
-        }, this),
-        open ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_outline.XMarkIcon, { className: "block h-6 w-6", "aria-hidden": "true" }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 64,
-          columnNumber: 21
-        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_outline.Bars3Icon, { className: "block h-6 w-6", "aria-hidden": "true" }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 66,
-          columnNumber: 21
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/Header.tsx",
-        lineNumber: 61,
-        columnNumber: 17
-      }, this) }, void 0, !1, {
-        fileName: "app/components/Header.tsx",
-        lineNumber: 59,
-        columnNumber: 15
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex flex-1 items-center justify-center sm:items-stretch sm:justify-start", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex flex-shrink-0 items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react3.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+  }), /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Disclosure, { as: "nav", className: "bg-gray-800", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_jsx_runtime2.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "mx-auto max-w-7xl px-2 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "relative flex h-16 items-center justify-between", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "absolute inset-y-0 left-0 flex items-center sm:hidden", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(import_react2.Disclosure.Button, { className: "inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("span", { className: "sr-only", children: " Open main menu " }),
+        open ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_outline.XMarkIcon, { className: "block h-6 w-6", "aria-hidden": "true" }) : /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_outline.Bars3Icon, { className: "block h-6 w-6", "aria-hidden": "true" })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "flex flex-1 items-center justify-center sm:items-stretch sm:justify-start", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "flex flex-shrink-0 items-center", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react3.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           "svg",
           {
             xmlns: "http://www.w3.org/2000/svg",
@@ -133,41 +109,17 @@ function Header(props) {
             strokeWidth: 1.5,
             stroke: "currentColor",
             className: "w-8 h-8 text-white",
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
               "path",
               {
                 strokeLinecap: "round",
                 strokeLinejoin: "round",
                 d: "M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/Header.tsx",
-                lineNumber: 81,
-                columnNumber: 23
-              },
-              this
+              }
             )
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/Header.tsx",
-            lineNumber: 73,
-            columnNumber: 21
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 72,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 71,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "hidden sm:ml-6 sm:block", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex space-x-4", children: routes2.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+          }
+        ) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "hidden sm:ml-6 sm:block", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "flex space-x-4", children: routes2.map((item) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
           import_react3.Link,
           {
             to: item.href,
@@ -178,62 +130,15 @@ function Header(props) {
             "aria-current": item.current ? "page" : void 0,
             children: item.name
           },
-          item.name,
-          !1,
-          {
-            fileName: "app/components/Header.tsx",
-            lineNumber: 92,
-            columnNumber: 23
-          },
-          this
-        )) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 90,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 89,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/Header.tsx",
-        lineNumber: 70,
-        columnNumber: 15
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_remix.SignedIn, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(AccountLink, {}, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 111,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 110,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_remix.SignedOut, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(SigninLink, {}, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 114,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/Header.tsx",
-          lineNumber: 113,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/Header.tsx",
-        lineNumber: 109,
-        columnNumber: 15
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/Header.tsx",
-      lineNumber: 58,
-      columnNumber: 13
-    }, this) }, void 0, !1, {
-      fileName: "app/components/Header.tsx",
-      lineNumber: 57,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Disclosure.Panel, { className: "sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "space-y-1 px-2 pt-2 pb-3", children: routes2.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+          item.name
+        )) }) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_remix.SignedIn, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(AccountLink, {}) }),
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_remix.SignedOut, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(SigninLink, {}) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Disclosure.Panel, { className: "sm:hidden", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "space-y-1 px-2 pt-2 pb-3", children: routes2.map((item) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
       import_react3.Link,
       {
         "aria-current": item.current ? "page" : void 0,
@@ -244,58 +149,19 @@ function Header(props) {
         to: item.href,
         children: item.name
       },
-      item.name,
-      !1,
-      {
-        fileName: "app/components/Header.tsx",
-        lineNumber: 123,
-        columnNumber: 17
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/Header.tsx",
-      lineNumber: 121,
-      columnNumber: 13
-    }, this) }, void 0, !1, {
-      fileName: "app/components/Header.tsx",
-      lineNumber: 120,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/Header.tsx",
-    lineNumber: 56,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/Header.tsx",
-    lineNumber: 54,
-    columnNumber: 5
-  }, this);
+      item.name
+    )) }) })
+  ] }) });
 }
 
 // app/components/Footer.tsx
-var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime");
+var import_jsx_runtime3 = require("react/jsx-runtime");
 function Footer() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("footer", { className: "bg-white", "aria-labelledby": "footer-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mt-12 border-t border-gray-200 pt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-base text-gray-400 xl:text-center", children: "\xA9 2022 Bithuis, LLC. All rights reserved." }, void 0, !1, {
-    fileName: "app/components/Footer.tsx",
-    lineNumber: 6,
-    columnNumber: 21
-  }, this) }, void 0, !1, {
-    fileName: "app/components/Footer.tsx",
-    lineNumber: 5,
-    columnNumber: 17
-  }, this) }, void 0, !1, {
-    fileName: "app/components/Footer.tsx",
-    lineNumber: 4,
-    columnNumber: 13
-  }, this) }, void 0, !1, {
-    fileName: "app/components/Footer.tsx",
-    lineNumber: 3,
-    columnNumber: 9
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("footer", { className: "bg-white", "aria-labelledby": "footer-heading", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "mt-12 border-t border-gray-200 pt-8", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { className: "text-base text-gray-400 xl:text-center", children: "\xA9 2022 Bithuis, LLC. All rights reserved." }) }) }) });
 }
 
 // app/root.tsx
-var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta = () => ({ title: "New Remix App" }), links = () => [
+var import_jsx_runtime4 = require("react/jsx-runtime"), meta = () => ({ title: "New Remix App" }), links = () => [
   { rel: "stylesheet", href: tailwind_default }
 ], loader = (args) => (0, import_ssr.rootAuthLoader)(
   args,
@@ -307,74 +173,22 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta = () => ({ 
 );
 function App() {
   let { message } = (0, import_react4.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 35,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 36,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 37,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 38,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 34,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Header, { isOwner: !0 }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 41,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 42,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 43,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 44,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 45,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Footer, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 46,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 40,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 33,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { charSet: "utf-8" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.Meta, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.Links, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Header, { isOwner: !0 }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.Outlet, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.ScrollRestoration, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.Scripts, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.LiveReload, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Footer, {})
+    ] })
+  ] });
 }
 var root_default = (0, import_remix2.ClerkApp)(App), CatchBoundary = (0, import_remix2.ClerkCatchBoundary)();
 
@@ -388,27 +202,19 @@ __export(id_exports, {
 var import_react6 = require("react");
 
 // app/components/forms/descriptionInput.tsx
-var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime");
+var import_jsx_runtime5 = require("react/jsx-runtime");
 function DescriptionInput(props) {
   let { description, setDescription } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "sm:col-span-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "sm:col-span-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       "label",
       {
         htmlFor: "description",
         className: "block text-sm font-medium text-gray-700",
         children: "Description"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/descriptionInput.tsx",
-        lineNumber: 11,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       "textarea",
       {
         id: "description",
@@ -419,49 +225,25 @@ function DescriptionInput(props) {
         onChange: (e) => {
           setDescription(e.target.value);
         }
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/descriptionInput.tsx",
-        lineNumber: 18,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/forms/descriptionInput.tsx",
-      lineNumber: 17,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/descriptionInput.tsx",
-    lineNumber: 10,
-    columnNumber: 5
-  }, this);
+      }
+    ) })
+  ] });
 }
 
 // app/components/forms/titleInput.tsx
-var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function TitleInput(props) {
   let { title, setTitle } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "sm:col-span-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "sm:col-span-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
       "label",
       {
         htmlFor: "title",
         className: "block text-sm font-medium text-gray-700",
         children: "Title"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/titleInput.tsx",
-        lineNumber: 11,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
       "input",
       {
         type: "text",
@@ -471,29 +253,13 @@ function TitleInput(props) {
         className: "block w-full p-2 rounded-md border-gray-300 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
         value: title,
         onChange: (e) => setTitle(e.target.value)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/titleInput.tsx",
-        lineNumber: 18,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/forms/titleInput.tsx",
-      lineNumber: 17,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/titleInput.tsx",
-    lineNumber: 10,
-    columnNumber: 5
-  }, this);
+      }
+    ) })
+  ] });
 }
 
 // app/components/forms/stepsInput.tsx
-var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime");
+var import_jsx_runtime7 = require("react/jsx-runtime");
 function StepsInput(props) {
   let { steps, setSteps } = props;
   function addStep() {
@@ -509,14 +275,10 @@ function StepsInput(props) {
       newSteps.splice(index, 1), setSteps(newSteps);
     };
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "sm:col-span-6 ", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "block text-md font-medium text-gray-700 mb-4", children: "Steps" }, void 0, !1, {
-      fileName: "app/components/forms/stepsInput.tsx",
-      lineNumber: 29,
-      columnNumber: 7
-    }, this),
-    steps.map((step, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "my-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "sm:col-span-6 ", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "block text-md font-medium text-gray-700 mb-4", children: "Steps" }),
+    steps.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "my-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
         "label",
         {
           htmlFor: "step",
@@ -525,18 +287,10 @@ function StepsInput(props) {
             "Step ",
             index + 1
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/forms/stepsInput.tsx",
-          lineNumber: 33,
-          columnNumber: 13
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "textarea",
           {
             id: "step",
@@ -547,27 +301,15 @@ function StepsInput(props) {
             onChange: (e) => {
               updateStep(index, e.target.value);
             }
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/forms/stepsInput.tsx",
-            lineNumber: 41,
-            columnNumber: 17
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/forms/stepsInput.tsx",
-          lineNumber: 40,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex-none content-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex-none content-center", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "button",
           {
             className: "m-2",
             type: "button",
             onClick: removeStep(index),
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
               "svg",
               {
                 xmlns: "http://www.w3.org/2000/svg",
@@ -576,57 +318,21 @@ function StepsInput(props) {
                 strokeWidth: 1.5,
                 stroke: "currentColor",
                 className: "w-6 h-6",
-                children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
                     strokeLinejoin: "round",
                     d: "M6 18L18 6M6 6l12 12"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/forms/stepsInput.tsx",
-                    lineNumber: 66,
-                    columnNumber: 21
-                  },
-                  this
+                  }
                 )
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/forms/stepsInput.tsx",
-                lineNumber: 58,
-                columnNumber: 19
-              },
-              this
+              }
             )
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/forms/stepsInput.tsx",
-            lineNumber: 53,
-            columnNumber: 17
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/forms/stepsInput.tsx",
-          lineNumber: 52,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/forms/stepsInput.tsx",
-        lineNumber: 39,
-        columnNumber: 13
-      }, this)
-    ] }, index, !0, {
-      fileName: "app/components/forms/stepsInput.tsx",
-      lineNumber: 32,
-      columnNumber: 11
-    }, this)),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("button", { className: "m-2", type: "button", onClick: addStep, children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+          }
+        ) })
+      ] })
+    ] }, index)),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { className: "m-2", type: "button", onClick: addStep, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       "svg",
       {
         xmlns: "http://www.w3.org/2000/svg",
@@ -635,45 +341,21 @@ function StepsInput(props) {
         strokeWidth: 1.5,
         stroke: "currentColor",
         className: "w-6 h-6 border-2 border-indigo-700 rounded-md",
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
           "path",
           {
             strokeLinecap: "round",
             strokeLinejoin: "round",
             d: "M12 4.5v15m7.5-7.5h-15"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/forms/stepsInput.tsx",
-            lineNumber: 87,
-            columnNumber: 11
-          },
-          this
+          }
         )
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/stepsInput.tsx",
-        lineNumber: 79,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/forms/stepsInput.tsx",
-      lineNumber: 78,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/stepsInput.tsx",
-    lineNumber: 28,
-    columnNumber: 5
-  }, this);
+      }
+    ) })
+  ] });
 }
 
 // app/components/forms/ingredientsInput.tsx
-var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime");
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function IngredientsInput(props) {
   let { ingredients, setIngredients } = props;
   function addIngredient() {
@@ -690,15 +372,11 @@ function IngredientsInput(props) {
       newIngredients.splice(index, 1), setIngredients(newIngredients);
     };
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "sm:col-span-6 ", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { className: "block text-md font-medium text-gray-700 mb-4", children: "Ingredients" }, void 0, !1, {
-      fileName: "app/components/forms/ingredientsInput.tsx",
-      lineNumber: 31,
-      columnNumber: 7
-    }, this),
-    ingredients.map((ingredient, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex my-2 md:w-1/2 w-full space-x-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "sm:col-span-6 ", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "block text-md font-medium text-gray-700 mb-4", children: "Ingredients" }),
+    ingredients.map((ingredient, index) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex my-2 md:w-1/2 w-full space-x-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
           "label",
           {
             htmlFor: "ingredient",
@@ -707,17 +385,9 @@ function IngredientsInput(props) {
               "Ingredient ",
               index + 1
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/forms/ingredientsInput.tsx",
-            lineNumber: 39,
-            columnNumber: 17
-          },
-          this
+          }
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-1", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
           "input",
           {
             type: "text",
@@ -728,36 +398,16 @@ function IngredientsInput(props) {
               updateIngredient(index, e.target.value);
             },
             value: ingredient
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/forms/ingredientsInput.tsx",
-            lineNumber: 46,
-            columnNumber: 19
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/forms/ingredientsInput.tsx",
-          lineNumber: 45,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/forms/ingredientsInput.tsx",
-        lineNumber: 38,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/forms/ingredientsInput.tsx",
-        lineNumber: 37,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex-none content-end", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+          }
+        ) })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-none content-end", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
         "button",
         {
           className: "mt-8",
           type: "button",
           onClick: removeIngredient(index),
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
             "svg",
             {
               xmlns: "http://www.w3.org/2000/svg",
@@ -766,99 +416,47 @@ function IngredientsInput(props) {
               strokeWidth: 1.5,
               stroke: "currentColor",
               className: "w-6 h-6",
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   d: "M6 18L18 6M6 6l12 12"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/forms/ingredientsInput.tsx",
-                  lineNumber: 73,
-                  columnNumber: 19
-                },
-                this
+                }
               )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/forms/ingredientsInput.tsx",
-              lineNumber: 65,
-              columnNumber: 17
-            },
-            this
+            }
           )
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/forms/ingredientsInput.tsx",
-          lineNumber: 60,
-          columnNumber: 15
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/forms/ingredientsInput.tsx",
-        lineNumber: 59,
-        columnNumber: 13
-      }, this)
-    ] }, index, !0, {
-      fileName: "app/components/forms/ingredientsInput.tsx",
-      lineNumber: 36,
-      columnNumber: 11
-    }, this)),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+        }
+      ) })
+    ] }, index)),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
       "button",
       {
         type: "button",
         className: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
         onClick: addIngredient,
         children: "Add"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/ingredientsInput.tsx",
-        lineNumber: 85,
-        columnNumber: 7
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/ingredientsInput.tsx",
-    lineNumber: 30,
-    columnNumber: 5
-  }, this);
+  ] });
 }
 
 // app/components/forms/categoriesInput.tsx
-var import_react5 = require("react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime");
+var import_react5 = require("react"), import_jsx_runtime9 = require("react/jsx-runtime");
 function CategoriesInput(props) {
   let { categories, setCategories } = props, [categoryInput, setCategoryInput] = (0, import_react5.useState)(""), addCategory = (category) => {
     category !== "" && (setCategories([...categories, category]), setCategoryInput(""));
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "sm:col-span-6 max-w-7xl", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "sm:col-span-6 max-w-7xl", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
       "label",
       {
         htmlFor: "location",
         className: "block text-sm font-medium text-gray-700",
         children: "Categories"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/categoriesInput.tsx",
-        lineNumber: 23,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
       "input",
       {
         type: "text",
@@ -868,17 +466,9 @@ function CategoriesInput(props) {
           setCategoryInput(e.target.value);
         },
         value: categoryInput
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/categoriesInput.tsx",
-        lineNumber: 29,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
       "button",
       {
         type: "button",
@@ -887,22 +477,14 @@ function CategoriesInput(props) {
           addCategory(categoryInput);
         },
         children: "Add"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/categoriesInput.tsx",
-        lineNumber: 38,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("ul", { role: "list", className: "flex flex-wrap m-2", children: categories.map((category, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("ul", { role: "list", className: "flex flex-wrap m-2", children: categories.map((category, index) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
       "li",
       {
         className: "relative flex-initial mr-4 mt-4 p-3 shadow-sm rounded-lg bg-indigo-100 text-md font-medium text-indigo-800 text-center",
         children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("button", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             "svg",
             {
               xmlns: "http://www.w3.org/2000/svg",
@@ -916,86 +498,39 @@ function CategoriesInput(props) {
                   categories.filter((c) => c !== category)
                 );
               },
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   d: "M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/forms/categoriesInput.tsx",
-                  lineNumber: 71,
-                  columnNumber: 19
-                },
-                this
+                }
               )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/forms/categoriesInput.tsx",
-              lineNumber: 56,
-              columnNumber: 17
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/components/forms/categoriesInput.tsx",
-            lineNumber: 55,
-            columnNumber: 15
-          }, this),
+            }
+          ) }),
           category
         ]
       },
-      index,
-      !0,
-      {
-        fileName: "app/components/forms/categoriesInput.tsx",
-        lineNumber: 51,
-        columnNumber: 13
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/forms/categoriesInput.tsx",
-      lineNumber: 49,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/forms/categoriesInput.tsx",
-      lineNumber: 48,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/categoriesInput.tsx",
-    lineNumber: 22,
-    columnNumber: 5
-  }, this);
+      index
+    )) }) })
+  ] });
 }
 
 // app/components/forms/imagesInput.tsx
-var import_uuid = require("uuid"), import_jsx_dev_runtime10 = require("react/jsx-dev-runtime");
+var import_uuid = require("uuid"), import_jsx_runtime10 = require("react/jsx-runtime");
 function ImagesInput(props) {
   let { setImageUrl } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "sm:col-span-6", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "sm:col-span-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "label",
       {
         htmlFor: "cover-image",
         className: "block text-sm font-medium text-gray-700",
         children: "Images"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/imagesInput.tsx",
-        lineNumber: 37,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-1 text-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-1 text-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
         "svg",
         {
           className: "mx-auto h-12 w-12 text-gray-400",
@@ -1003,46 +538,26 @@ function ImagesInput(props) {
           fill: "none",
           viewBox: "0 0 48 48",
           "aria-hidden": "true",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
             "path",
             {
               d: "M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02",
               strokeWidth: 2,
               strokeLinecap: "round",
               strokeLinejoin: "round"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/forms/imagesInput.tsx",
-              lineNumber: 52,
-              columnNumber: 13
-            },
-            this
+            }
           )
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/forms/imagesInput.tsx",
-          lineNumber: 45,
-          columnNumber: 11
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex text-sm text-gray-600", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex text-sm text-gray-600", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
           "label",
           {
             htmlFor: "file-upload",
             className: "relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500",
             children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { children: "Upload a file" }, void 0, !1, {
-                fileName: "app/components/forms/imagesInput.tsx",
-                lineNumber: 64,
-                columnNumber: 15
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { children: "Upload a file" }),
+              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
                 "input",
                 {
                   id: "file-upload",
@@ -1065,106 +580,42 @@ function ImagesInput(props) {
                       `https://cookbook-recipe-images.s3.amazonaws.com/${data.fields.key}`
                     );
                   }
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/forms/imagesInput.tsx",
-                  lineNumber: 65,
-                  columnNumber: 15
-                },
-                this
+                }
               )
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/forms/imagesInput.tsx",
-            lineNumber: 60,
-            columnNumber: 13
-          },
-          this
+          }
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "pl-1", children: "or drag and drop" }, void 0, !1, {
-          fileName: "app/components/forms/imagesInput.tsx",
-          lineNumber: 74,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/forms/imagesInput.tsx",
-        lineNumber: 59,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-xs text-gray-500", children: "PNG, JPG, GIF up to 10MB" }, void 0, !1, {
-        fileName: "app/components/forms/imagesInput.tsx",
-        lineNumber: 76,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/forms/imagesInput.tsx",
-      lineNumber: 44,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/forms/imagesInput.tsx",
-      lineNumber: 43,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/imagesInput.tsx",
-    lineNumber: 36,
-    columnNumber: 5
-  }, this);
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "pl-1", children: "or drag and drop" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-xs text-gray-500", children: "PNG, JPG, GIF up to 10MB" })
+    ] }) })
+  ] });
 }
 
 // app/components/forms/cancelAndSaveButtons.tsx
-var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function CancelAndSaveButton(props) {
   let { handleCancel, isSaveDisabled } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "pt-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "flex justify-end", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "pt-5", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex justify-end", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
       "button",
       {
         type: "button",
         className: "rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
         onClick: handleCancel,
         children: "Cancel"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/cancelAndSaveButtons.tsx",
-        lineNumber: 12,
-        columnNumber: 9
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
       "button",
       {
         type: "submit",
         disabled: isSaveDisabled,
         className: "ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 disabled:bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
         children: "Save"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/forms/cancelAndSaveButtons.tsx",
-        lineNumber: 19,
-        columnNumber: 9
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/components/forms/cancelAndSaveButtons.tsx",
-    lineNumber: 11,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/forms/cancelAndSaveButtons.tsx",
-    lineNumber: 10,
-    columnNumber: 5
-  }, this);
+  ] }) });
 }
 
 // app/routes/recipes/edit/$id.tsx
@@ -1245,7 +696,7 @@ async function deleteRecipe(id) {
 }
 
 // app/routes/recipes/edit/$id.tsx
-var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), loader2 = async (args) => {
+var import_jsx_runtime12 = require("react/jsx-runtime"), loader2 = async (args) => {
   let { userId } = await (0, import_ssr2.getAuth)(args);
   if (!userId)
     return (0, import_node.redirect)("/sign-in");
@@ -1278,136 +729,52 @@ var UpdateRecipe = () => {
       action: $form.getAttribute("action") ?? $form.action
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react7.Form, { onSubmit: handleSubmit, method: "post", className: "space-y-8 divide-gray-200", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-lg font-medium leading-6 text-gray-900", children: "Create a New Recipe" }, void 0, !1, {
-      fileName: "app/routes/recipes/edit/$id.tsx",
-      lineNumber: 101,
-      columnNumber: 21
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(TitleInput, { title, setTitle }, void 0, !1, {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 106,
-        columnNumber: 25
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(import_react7.Form, { onSubmit: handleSubmit, method: "post", className: "space-y-8 divide-gray-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { className: "text-lg font-medium leading-6 text-gray-900", children: "Create a New Recipe" }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(TitleInput, { title, setTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         CategoriesInput,
         {
           categories,
           setCategories
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/edit/$id.tsx",
-          lineNumber: 108,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         DescriptionInput,
         {
           description,
           setDescription
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/edit/$id.tsx",
-          lineNumber: 113,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(StepsInput, { steps, setSteps }, void 0, !1, {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 118,
-        columnNumber: 25
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StepsInput, { steps, setSteps }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         IngredientsInput,
         {
           ingredients,
           setIngredients
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/edit/$id.tsx",
-          lineNumber: 120,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(ImagesInput, { setImageUrl }, void 0, !1, {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 125,
-        columnNumber: 25
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/edit/$id.tsx",
-      lineNumber: 105,
-      columnNumber: 21
-    }, this),
-    imageUrl && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "items-center mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ImagesInput, { setImageUrl })
+    ] }),
+    imageUrl && /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "items-center mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
         import_outline2.CheckIcon,
         {
           className: "h-6 w-6 text-green-600",
           "aria-hidden": "true"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/edit/$id.tsx",
-          lineNumber: 131,
-          columnNumber: 33
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 130,
-        columnNumber: 29
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-3 text-center sm:mt-5", children: "Upload successful" }, void 0, !1, {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 136,
-        columnNumber: 29
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/edit/$id.tsx",
-      lineNumber: 129,
-      columnNumber: 25
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mt-3 text-center sm:mt-5", children: "Upload successful" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
       CancelAndSaveButton,
       {
         handleCancel,
         isSaveDisabled: !1
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/recipes/edit/$id.tsx",
-        lineNumber: 139,
-        columnNumber: 21
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/routes/recipes/edit/$id.tsx",
-    lineNumber: 100,
-    columnNumber: 17
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/recipes/edit/$id.tsx",
-    lineNumber: 99,
-    columnNumber: 13
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/recipes/edit/$id.tsx",
-    lineNumber: 98,
-    columnNumber: 9
-  }, this);
+  ] }) }) });
 }, id_default = UpdateRecipe;
 
 // app/routes/recipes/create.tsx
@@ -1419,7 +786,7 @@ __export(create_exports, {
 });
 var import_react8 = require("react");
 var import_outline3 = require("@heroicons/react/24/outline"), import_ssr3 = require("@clerk/remix/ssr.server"), import_node2 = require("@remix-run/node"), import_react9 = require("@remix-run/react");
-var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), loader3 = async (args) => {
+var import_jsx_runtime13 = require("react/jsx-runtime"), loader3 = async (args) => {
   let { userId } = await (0, import_ssr3.getAuth)(args);
   return userId ? { userId } : (0, import_node2.redirect)("/sign-in");
 };
@@ -1448,136 +815,52 @@ var CreateRecipe = () => {
       action: $form.getAttribute("action") ?? $form.action
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react9.Form, { onSubmit: handleSubmit, method: "post", className: "space-y-8 divide-gray-200", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-lg font-medium leading-6 text-gray-900", children: "Create a New Recipe" }, void 0, !1, {
-      fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 94,
-      columnNumber: 21
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(TitleInput, { title, setTitle }, void 0, !1, {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 99,
-        columnNumber: 25
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_react9.Form, { onSubmit: handleSubmit, method: "post", className: "space-y-8 divide-gray-200", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { className: "text-lg font-medium leading-6 text-gray-900", children: "Create a New Recipe" }),
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(TitleInput, { title, setTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         CategoriesInput,
         {
           categories,
           setCategories
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 101,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         DescriptionInput,
         {
           description,
           setDescription
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 106,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(StepsInput, { steps, setSteps }, void 0, !1, {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 111,
-        columnNumber: 25
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(StepsInput, { steps, setSteps }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         IngredientsInput,
         {
           ingredients,
           setIngredients
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 113,
-          columnNumber: 25
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(ImagesInput, { setImageUrl }, void 0, !1, {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 118,
-        columnNumber: 25
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 98,
-      columnNumber: 21
-    }, this),
-    imageUrl && /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "items-center mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ImagesInput, { setImageUrl })
+    ] }),
+    imageUrl && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "items-center mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         import_outline3.CheckIcon,
         {
           className: "h-6 w-6 text-green-600",
           "aria-hidden": "true"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/create.tsx",
-          lineNumber: 124,
-          columnNumber: 33
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 123,
-        columnNumber: 29
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-3 text-center sm:mt-5", children: "Upload successful" }, void 0, !1, {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 129,
-        columnNumber: 29
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/create.tsx",
-      lineNumber: 122,
-      columnNumber: 25
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-3 text-center sm:mt-5", children: "Upload successful" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
       CancelAndSaveButton,
       {
         handleCancel,
         isSaveDisabled: !1
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/recipes/create.tsx",
-        lineNumber: 132,
-        columnNumber: 21
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 93,
-    columnNumber: 17
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 92,
-    columnNumber: 13
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/recipes/create.tsx",
-    lineNumber: 91,
-    columnNumber: 9
-  }, this);
+  ] }) }) });
 }, create_default = CreateRecipe;
 
 // app/routes/recipes/search.tsx
@@ -1590,48 +873,28 @@ __export(search_exports, {
 var import_react11 = require("@remix-run/react"), import_react12 = require("react");
 
 // app/components/paginator.tsx
-var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime");
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function Paginator(props) {
   let { length, page, setPage } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
     "nav",
     {
       className: "flex items-center border-gray-200 bg-white px-4 py-3 sm:px-6",
       "aria-label": "Pagination",
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "hidden sm:block", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "text-sm text-gray-700", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "hidden sm:block", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: "text-sm text-gray-700", children: [
           "Showing ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("span", { className: "font-medium", children: page * 8 - 7 }, void 0, !1, {
-            fileName: "app/components/paginator.tsx",
-            lineNumber: 19,
-            columnNumber: 19
-          }, this),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-medium", children: page * 8 - 7 }),
           " to",
           " ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("span", { className: "font-medium", children: page * 8 > length ? length : page * 8 }, void 0, !1, {
-            fileName: "app/components/paginator.tsx",
-            lineNumber: 20,
-            columnNumber: 11
-          }, this),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-medium", children: page * 8 > length ? length : page * 8 }),
           " ",
           "of ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("span", { className: "font-medium", children: length }, void 0, !1, {
-            fileName: "app/components/paginator.tsx",
-            lineNumber: 23,
-            columnNumber: 14
-          }, this),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-medium", children: length }),
           " results"
-        ] }, void 0, !0, {
-          fileName: "app/components/paginator.tsx",
-          lineNumber: 18,
-          columnNumber: 9
-        }, this) }, void 0, !1, {
-          fileName: "app/components/paginator.tsx",
-          lineNumber: 17,
-          columnNumber: 7
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex flex-1 justify-between sm:justify-end", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex flex-1 justify-between sm:justify-end", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
             "button",
             {
               type: "submit",
@@ -1640,17 +903,9 @@ function Paginator(props) {
               },
               className: "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50",
               children: "Previous"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/paginator.tsx",
-              lineNumber: 27,
-              columnNumber: 9
-            },
-            this
+            }
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
             "button",
             {
               type: "submit",
@@ -1659,105 +914,50 @@ function Paginator(props) {
               },
               className: "relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50",
               children: "Next"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/paginator.tsx",
-              lineNumber: 38,
-              columnNumber: 9
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/components/paginator.tsx",
-          lineNumber: 26,
-          columnNumber: 7
-        }, this)
+        ] })
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/paginator.tsx",
-      lineNumber: 13,
-      columnNumber: 5
-    },
-    this
+    }
   );
 }
 
 // app/components/recipeGrid/recipeBox.tsx
-var import_react10 = require("@remix-run/react"), import_jsx_dev_runtime15 = require("react/jsx-dev-runtime");
+var import_react10 = require("@remix-run/react"), import_jsx_runtime15 = require("react/jsx-runtime");
 function RecipeBox(props) {
   let { recipe } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_react10.Link, { to: `/recipes/${recipe._id}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex flex-1 flex-col p-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h3", { className: "mt-6 text-lg font-medium text-gray-900", children: recipe.title }, void 0, !1, {
-    fileName: "app/components/recipeGrid/recipeBox.tsx",
-    lineNumber: 20,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/recipeGrid/recipeBox.tsx",
-    lineNumber: 15,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/recipeGrid/recipeBox.tsx",
-    lineNumber: 14,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_react10.Link, { to: `/recipes/${recipe._id}`, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex flex-1 flex-col p-8", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h3", { className: "mt-6 text-lg font-medium text-gray-900", children: recipe.title }) }) });
 }
 
 // app/components/recipeGrid/index.tsx
-var import_jsx_dev_runtime16 = require("react/jsx-dev-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function RecipeGrid(props) {
   let { recipes } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
     "ul",
     {
       role: "list",
       className: "grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-4",
-      children: recipes.map((recipe) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+      children: recipes.map((recipe) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
         "li",
         {
           className: "col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(RecipeBox, { recipe }, void 0, !1, {
-            fileName: "app/components/recipeGrid/index.tsx",
-            lineNumber: 20,
-            columnNumber: 11
-          }, this)
+          children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RecipeBox, { recipe })
         },
-        recipe._id,
-        !1,
-        {
-          fileName: "app/components/recipeGrid/index.tsx",
-          lineNumber: 16,
-          columnNumber: 9
-        },
-        this
+        recipe._id
       ))
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/recipeGrid/index.tsx",
-      lineNumber: 11,
-      columnNumber: 5
-    },
-    this
+    }
   );
 }
 
 // app/components/searchBar.tsx
-var import_jsx_dev_runtime17 = require("react/jsx-dev-runtime");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 function SearchBar(props) {
   let { setSearchText } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "flex flex-col md:flex-row items-center", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-4 basis-3/4 mx-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("label", { htmlFor: "search", className: "text-sm font-medium text-gray-700", children: "Search" }, void 0, !1, {
-        fileName: "app/components/searchBar.tsx",
-        lineNumber: 14,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col md:flex-row items-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mt-4 basis-3/4 mx-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("label", { htmlFor: "search", className: "text-sm font-medium text-gray-700", children: "Search" }),
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "relative", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
         "input",
         {
           type: "text",
@@ -1765,50 +965,18 @@ function SearchBar(props) {
           id: "search",
           className: "block w-full border-gray-300 p-2 border rounded-md pr-12 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm",
           onChange: (e) => setSearchText(e.target.value)
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/searchBar.tsx",
-          lineNumber: 18,
-          columnNumber: 11
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/searchBar.tsx",
-        lineNumber: 17,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/searchBar.tsx",
-      lineNumber: 13,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "mt-10 basis-1/4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "mt-10 basis-1/4", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
       "button",
       {
         type: "submit",
         className: "inline-flex items-center mx-2 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
         children: "Search"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/searchBar.tsx",
-        lineNumber: 29,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/searchBar.tsx",
-      lineNumber: 28,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/searchBar.tsx",
-    lineNumber: 12,
-    columnNumber: 5
-  }, this);
+      }
+    ) })
+  ] });
 }
 
 // app/utils/search.server.ts
@@ -1843,7 +1011,7 @@ async function searchRecipes(search, category, skip) {
 }
 
 // app/routes/recipes/search.tsx
-var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), loader4 = async ({ params }) => {
+var import_jsx_runtime18 = require("react/jsx-runtime"), loader4 = async ({ params }) => {
   let recipes = await getRecipes(0), recipeCount = await getRecipeCount();
   return { recipes, recipeCount };
 }, action3 = async ({ request }) => {
@@ -1858,82 +1026,30 @@ var import_jsx_dev_runtime18 = require("react/jsx-dev-runtime"), loader4 = async
   let { recipes, recipeCount } = (0, import_react11.useLoaderData)(), actionData = (0, import_react11.useActionData)();
   actionData && (recipes = actionData.recipes, recipeCount = actionData.recipeCount);
   let [page, setPage] = (0, import_react12.useState)(1), [searchText, setSearchText] = (0, import_react12.useState)("");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_react11.Form, { method: "post", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("input", { name: "page", value: page, hidden: !0, readOnly: !0 }, void 0, !1, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 49,
-      columnNumber: 17
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("input", { name: "searchText", value: searchText, hidden: !0, readOnly: !0 }, void 0, !1, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 50,
-      columnNumber: 17
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("p", { className: "text-xl mt-6", children: "Recipes" }, void 0, !1, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 51,
-      columnNumber: 17
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_react11.Form, { method: "post", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "page", value: page, hidden: !0, readOnly: !0 }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "searchText", value: searchText, hidden: !0, readOnly: !0 }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xl mt-6", children: "Recipes" }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       SearchBar,
       {
         setSearchText,
         page
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 52,
-        columnNumber: 17
-      },
-      this
+      }
     ),
-    recipeCount === 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("p", { className: "text-xl mt-6", children: "No recipes found" }, void 0, !1, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 58,
-      columnNumber: 21
-    }, this),
-    recipeCount > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(import_jsx_dev_runtime18.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: "py-4 mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(RecipeGrid, { recipes }, void 0, !1, {
-        fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 63,
-        columnNumber: 29
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/recipes/search.tsx",
-        lineNumber: 62,
-        columnNumber: 25
-      }, this),
-      searchText === "" && /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(
+    recipeCount === 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-xl mt-6", children: "No recipes found" }),
+    recipeCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_jsx_runtime18.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "py-4 mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(RecipeGrid, { recipes }) }),
+      searchText === "" && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
         Paginator,
         {
           page,
           setPage,
           length: recipeCount
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/search.tsx",
-          lineNumber: 66,
-          columnNumber: 48
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/search.tsx",
-      lineNumber: 61,
-      columnNumber: 21
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/recipes/search.tsx",
-    lineNumber: 48,
-    columnNumber: 13
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/recipes/search.tsx",
-    lineNumber: 47,
-    columnNumber: 9
-  }, this);
+    ] })
+  ] }) });
 }, search_default = Recipes;
 
 // app/routes/menu/create.tsx
@@ -1954,10 +1070,10 @@ __export(id_exports2, {
 var import_clsx = __toESM(require("clsx")), import_node3 = require("@remix-run/node"), import_react15 = require("@remix-run/react");
 
 // app/components/deleteModal.tsx
-var import_react13 = require("react"), import_react14 = require("@headlessui/react"), import_outline4 = require("@heroicons/react/24/outline"), import_jsx_dev_runtime19 = require("react/jsx-dev-runtime");
+var import_react13 = require("react"), import_react14 = require("@headlessui/react"), import_outline4 = require("@heroicons/react/24/outline"), import_jsx_runtime19 = require("react/jsx-runtime");
 function DeleteRecipeModal(props) {
   let { open, setOpen, itemToDelete } = props, cancelButtonRef = (0, import_react13.useRef)(null);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_react14.Transition.Root, { show: open, as: import_react13.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_react14.Transition.Root, { show: open, as: import_react13.Fragment, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
     import_react14.Dialog,
     {
       as: "div",
@@ -1965,7 +1081,7 @@ function DeleteRecipeModal(props) {
       initialFocus: cancelButtonRef,
       onClose: setOpen,
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
           import_react14.Transition.Child,
           {
             as: import_react13.Fragment,
@@ -1975,22 +1091,10 @@ function DeleteRecipeModal(props) {
             leave: "ease-in duration-200",
             leaveFrom: "opacity-100",
             leaveTo: "opacity-0",
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" }, void 0, !1, {
-              fileName: "app/components/deleteModal.tsx",
-              lineNumber: 33,
-              columnNumber: 11
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/deleteModal.tsx",
-            lineNumber: 24,
-            columnNumber: 9
-          },
-          this
+            children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" })
+          }
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "fixed inset-0 z-10 overflow-y-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "fixed inset-0 z-10 overflow-y-auto", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
           import_react14.Transition.Child,
           {
             as: import_react13.Fragment,
@@ -2000,29 +1104,17 @@ function DeleteRecipeModal(props) {
             leave: "ease-in duration-200",
             leaveFrom: "opacity-100 translate-y-0 sm:scale-100",
             leaveTo: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95",
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(import_react14.Dialog.Panel, { className: "relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "sm:flex sm:items-start", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_react14.Dialog.Panel, { className: "relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "sm:flex sm:items-start", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
                   import_outline4.ExclamationTriangleIcon,
                   {
                     className: "h-6 w-6 text-red-600",
                     "aria-hidden": "true"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/deleteModal.tsx",
-                    lineNumber: 50,
-                    columnNumber: 21
-                  },
-                  this
-                ) }, void 0, !1, {
-                  fileName: "app/components/deleteModal.tsx",
-                  lineNumber: 49,
-                  columnNumber: 19
-                }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+                  }
+                ) }),
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
                     import_react14.Dialog.Title,
                     {
                       as: "h3",
@@ -2031,42 +1123,18 @@ function DeleteRecipeModal(props) {
                         "Delete ",
                         itemToDelete
                       ]
-                    },
-                    void 0,
-                    !0,
-                    {
-                      fileName: "app/components/deleteModal.tsx",
-                      lineNumber: 56,
-                      columnNumber: 21
-                    },
-                    this
+                    }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("p", { className: "text-sm text-gray-500", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("p", { className: "text-sm text-gray-500", children: [
                     "Are you sure you want to delete this",
                     " ",
                     itemToDelete.toLowerCase(),
                     "? All of your data will be permanently removed from our servers forever. This action cannot be undone."
-                  ] }, void 0, !0, {
-                    fileName: "app/components/deleteModal.tsx",
-                    lineNumber: 63,
-                    columnNumber: 23
-                  }, this) }, void 0, !1, {
-                    fileName: "app/components/deleteModal.tsx",
-                    lineNumber: 62,
-                    columnNumber: 21
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/deleteModal.tsx",
-                  lineNumber: 55,
-                  columnNumber: 19
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/deleteModal.tsx",
-                lineNumber: 48,
-                columnNumber: 17
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "mt-5 sm:mt-4 sm:flex sm:flex-row-reverse", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+                  ] }) })
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mt-5 sm:mt-4 sm:flex sm:flex-row-reverse", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
                   "button",
                   {
                     type: "submit",
@@ -2074,17 +1142,9 @@ function DeleteRecipeModal(props) {
                     value: "_delete",
                     className: "inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm",
                     children: "Delete"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/deleteModal.tsx",
-                    lineNumber: 73,
-                    columnNumber: 19
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
+                /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
                   "button",
                   {
                     type: "button",
@@ -2092,63 +1152,19 @@ function DeleteRecipeModal(props) {
                     onClick: () => setOpen(!1),
                     ref: cancelButtonRef,
                     children: "Cancel"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/deleteModal.tsx",
-                    lineNumber: 81,
-                    columnNumber: 19
-                  },
-                  this
+                  }
                 )
-              ] }, void 0, !0, {
-                fileName: "app/components/deleteModal.tsx",
-                lineNumber: 72,
-                columnNumber: 17
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/deleteModal.tsx",
-              lineNumber: 47,
-              columnNumber: 15
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/deleteModal.tsx",
-            lineNumber: 38,
-            columnNumber: 13
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/deleteModal.tsx",
-          lineNumber: 37,
-          columnNumber: 11
-        }, this) }, void 0, !1, {
-          fileName: "app/components/deleteModal.tsx",
-          lineNumber: 36,
-          columnNumber: 9
-        }, this)
+              ] })
+            ] })
+          }
+        ) }) })
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/deleteModal.tsx",
-      lineNumber: 18,
-      columnNumber: 7
-    },
-    this
-  ) }, void 0, !1, {
-    fileName: "app/components/deleteModal.tsx",
-    lineNumber: 17,
-    columnNumber: 5
-  }, this);
+    }
+  ) });
 }
 
 // app/routes/recipes/$id.tsx
-var import_react16 = require("react"), import_jsx_dev_runtime20 = require("react/jsx-dev-runtime"), loader5 = async ({ params }) => {
+var import_react16 = require("react"), import_jsx_runtime20 = require("react/jsx-runtime"), loader5 = async ({ params }) => {
   let id = params.id;
   return await getRecipe(id);
 }, action4 = async ({ params, request }) => {
@@ -2157,14 +1173,10 @@ var import_react16 = require("react"), import_jsx_dev_runtime20 = require("react
 };
 function Recipe() {
   let recipe = (0, import_react15.useLoaderData)(), [openDelete, setOpenDelete] = (0, import_react16.useState)(!1);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "flex justify-start content-center space-x-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-4xl font-bold text-gray-900 p-1", children: recipe.title }, void 0, !1, {
-        fileName: "app/routes/recipes/$id.tsx",
-        lineNumber: 40,
-        columnNumber: 17
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("button", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex justify-start content-center space-x-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-4xl font-bold text-gray-900 p-1", children: recipe.title }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("button", { className: "", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         "svg",
         {
           xmlns: "http://www.w3.org/2000/svg",
@@ -2176,191 +1188,72 @@ function Recipe() {
             "w-6 h-6 active:animate-ping hover:fill-red-500 ",
             recipe.isFavorite && ""
           ),
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
             "path",
             {
               strokeLinecap: "round",
               strokeLinejoin: "round",
               d: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/recipes/$id.tsx",
-              lineNumber: 53,
-              columnNumber: 25
-            },
-            this
+            }
           )
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/$id.tsx",
-          lineNumber: 42,
-          columnNumber: 21
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/recipes/$id.tsx",
-        lineNumber: 41,
-        columnNumber: 17
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 39,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-md text-gray-500 mt-2", children: [
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("p", { className: "text-md text-gray-500 mt-2", children: [
       "Published on ",
       recipe.createdAt
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 61,
-      columnNumber: 13
-    }, this),
-    recipe.categories && recipe.categories.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "flex flex-wrap", children: recipe.categories.map((category, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+    ] }),
+    recipe.categories && recipe.categories.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-wrap", children: recipe.categories.map((category, index) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
       "div",
       {
         className: "flex-initial mr-4 mt-4 p-2 shadow-sm rounded-lg bg-indigo-100 text-md font-medium text-indigo-800 text-center",
         children: category
       },
-      index,
-      !1,
-      {
-        fileName: "app/routes/recipes/$id.tsx",
-        lineNumber: 67,
-        columnNumber: 25
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 65,
-      columnNumber: 17
-    }, this),
-    recipe.photo && recipe.photo !== "" && /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "mx-auto max-w-4xl m-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      index
+    )) }),
+    recipe.photo && recipe.photo !== "" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "mx-auto max-w-4xl m-4", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
       "img",
       {
         src: recipe.photo,
         alt: recipe.title,
         height: 300,
         width: 300
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/recipes/$id.tsx",
-        lineNumber: 78,
-        columnNumber: 21
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 77,
-      columnNumber: 17
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-2xl text-gray-500 mt-2", children: "Description" }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 86,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-gray-900", children: recipe.description }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 87,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-2xl text-gray-500 mt-2", children: "Ingredients" }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 88,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("ul", { className: "list-disc list-inside", children: recipe.ingredients.map((ingredient, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("li", { className: "text-gray-900 p-1", children: ingredient }, index, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 91,
-      columnNumber: 21
-    }, this)) }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 89,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("p", { className: "text-2xl text-gray-500 mt-2", children: "Steps" }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 96,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("ol", { className: "list-decimal list-inside", children: recipe.steps.map((step, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("li", { className: "text-gray-900 p-1", children: step }, index, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 99,
-      columnNumber: 21
-    }, this)) }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 97,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "flex", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl text-gray-500 mt-2", children: "Description" }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-gray-900", children: recipe.description }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl text-gray-500 mt-2", children: "Ingredients" }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ul", { className: "list-disc list-inside", children: recipe.ingredients.map((ingredient, index) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { className: "text-gray-900 p-1", children: ingredient }, index)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl text-gray-500 mt-2", children: "Steps" }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("ol", { className: "list-decimal list-inside", children: recipe.steps.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("li", { className: "text-gray-900 p-1", children: step }, index)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         import_react15.Link,
         {
           className: "inline-flex items-center rounded-md border border-transparent bg-gray-400 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2",
           to: `/recipes/edit/${recipe._id}`,
           children: "Edit"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/$id.tsx",
-          lineNumber: 105,
-          columnNumber: 17
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         "button",
         {
           type: "button",
           className: "inline-flex items-center rounded-md border border-transparent bg-red-500 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-2",
           onClick: () => setOpenDelete(!0),
           children: "Delete"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/recipes/$id.tsx",
-          lineNumber: 111,
-          columnNumber: 17
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 104,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(import_react15.Form, { method: "POST", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_react15.Form, { method: "POST", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
       DeleteRecipeModal,
       {
         open: openDelete,
         setOpen: setOpenDelete,
         itemToDelete: "Recipe"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/recipes/$id.tsx",
-        lineNumber: 120,
-        columnNumber: 17
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/recipes/$id.tsx",
-      lineNumber: 119,
-      columnNumber: 13
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/recipes/$id.tsx",
-    lineNumber: 38,
-    columnNumber: 9
-  }, this);
+      }
+    ) })
+  ] });
 }
 
 // app/routes/sign-in/$.tsx
@@ -2368,17 +1261,9 @@ var __exports = {};
 __export(__exports, {
   default: () => SignInPage
 });
-var import_remix3 = require("@clerk/remix"), import_jsx_dev_runtime21 = require("react/jsx-dev-runtime");
+var import_remix3 = require("@clerk/remix"), import_jsx_runtime21 = require("react/jsx-runtime");
 function SignInPage() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "mx-auto max-w-sm mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_remix3.SignIn, { path: "/sign-in", routing: "path", signUpUrl: "/sign-up" }, void 0, !1, {
-    fileName: "app/routes/sign-in/$.tsx",
-    lineNumber: 6,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/sign-in/$.tsx",
-    lineNumber: 5,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mx-auto max-w-sm mt-8", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_remix3.SignIn, { path: "/sign-in", routing: "path", signUpUrl: "/sign-up" }) });
 }
 
 // app/routes/sign-up/$.tsx
@@ -2386,17 +1271,9 @@ var __exports2 = {};
 __export(__exports2, {
   default: () => SignUpPage
 });
-var import_remix4 = require("@clerk/remix"), import_jsx_dev_runtime22 = require("react/jsx-dev-runtime");
+var import_remix4 = require("@clerk/remix"), import_jsx_runtime22 = require("react/jsx-runtime");
 function SignUpPage() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("div", { className: "mx-auto max-w-sm mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(import_remix4.SignUp, { path: "/sign-up", routing: "path", signInUrl: "/sign-in" }, void 0, !1, {
-    fileName: "app/routes/sign-up/$.tsx",
-    lineNumber: 6,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/sign-up/$.tsx",
-    lineNumber: 5,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "mx-auto max-w-sm mt-8", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_remix4.SignUp, { path: "/sign-up", routing: "path", signInUrl: "/sign-in" }) });
 }
 
 // app/routes/index.tsx
@@ -2413,20 +1290,12 @@ var recipe_default = "/build/_assets/recipe-VOGOFNXP.png";
 var menu_default = "/build/_assets/menu-ZK4ZMNVE.jpg";
 
 // app/routes/index.tsx
-var import_jsx_dev_runtime23 = require("react/jsx-dev-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 function Card({ title, description, image, url }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { className: "col-span-1 rounded-2xl bg-gray-800 px-8 py-10 text-center", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("h3", { className: "mt-6 text-2xl font-semibold leading-7 tracking-tight text-white", children: title }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 8,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("p", { className: "text-md leading-6 text-gray-400", children: description }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 11,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { className: "mt-8 flex justify-center rounded-md", children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "col-span-1 rounded-2xl bg-gray-800 px-8 py-10 text-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "mt-6 text-2xl font-semibold leading-7 tracking-tight text-white", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-md leading-6 text-gray-400", children: description }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "mt-8 flex justify-center rounded-md", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       "img",
       {
         src: image,
@@ -2434,106 +1303,46 @@ function Card({ title, description, image, url }) {
         className: "rounded-lg",
         width: 300,
         height: 300
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 13,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 12,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { className: "m-4 flex justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "m-4 flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       import_react17.Link,
       {
         type: "button",
         className: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
         to: url,
         children: title
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 22,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/index.tsx",
-      lineNumber: 21,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 7,
-    columnNumber: 5
-  }, this);
+      }
+    ) })
+  ] });
 }
-var Home = () => /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { className: "mx-auto max-w-6xl px-4 sm:px-6 lg:px-8", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("p", { className: "text-2xl text-center m-6", children: "Crystal's Cooking" }, void 0, !1, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 37,
-    columnNumber: 7
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("p", { className: "text-md text-center m-6", children: "Bacon ipsum dolor amet fatback swine cupim capicola tail. Kevin ball tip cupim meatloaf strip steak. Chislic pork chicken meatloaf beef tenderloin shankle tongue cow rump biltong filet mignon. Beef ribs pancetta tenderloin, spare ribs ribeye sausage filet mignon turkey chislic tail brisket salami. Shankle biltong cow, sirloin porchetta pastrami buffalo tail swine bacon." }, void 0, !1, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 38,
-    columnNumber: 7
-  }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)("div", { className: "grid grid-cols-2 space-x-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(
+var Home = () => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "mx-auto max-w-6xl px-4 sm:px-6 lg:px-8", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-2xl text-center m-6", children: "Crystal's Cooking" }),
+  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-md text-center m-6", children: "Bacon ipsum dolor amet fatback swine cupim capicola tail. Kevin ball tip cupim meatloaf strip steak. Chislic pork chicken meatloaf beef tenderloin shankle tongue cow rump biltong filet mignon. Beef ribs pancetta tenderloin, spare ribs ribeye sausage filet mignon turkey chislic tail brisket salami. Shankle biltong cow, sirloin porchetta pastrami buffalo tail swine bacon." }),
+  /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "grid grid-cols-2 space-x-12", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       Card,
       {
         title: "Recipes",
         description: "Your favorite recipes",
         image: recipe_default,
         url: "/recipes"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 47,
-        columnNumber: 9
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       Card,
       {
         title: "Menus",
         description: "Curated menus for a special occasion",
         image: menu_default,
         url: "/menus"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/index.tsx",
-        lineNumber: 53,
-        columnNumber: 9
-      },
-      this
+      }
     )
-  ] }, void 0, !0, {
-    fileName: "app/routes/index.tsx",
-    lineNumber: 46,
-    columnNumber: 7
-  }, this)
-] }, void 0, !0, {
-  fileName: "app/routes/index.tsx",
-  lineNumber: 36,
-  columnNumber: 5
-}, this), routes_default = Home;
+  ] })
+] }), routes_default = Home;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-XPHG4IV3.js", imports: ["/build/_shared/chunk-Q2NKTYVS.js", "/build/_shared/chunk-CCMC25PN.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-6HB4C3JY.js", imports: ["/build/_shared/chunk-TLLKLDIT.js", "/build/_shared/chunk-GBIVASQL.js", "/build/_shared/chunk-L7L27XNQ.js", "/build/_shared/chunk-LBPVCQET.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-LZ6FJAZT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-LXZHZ5M3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-ECWLPRXD.js", imports: ["/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-QQIOZWIR.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/edit/$id": { id: "routes/recipes/edit/$id", parentId: "root", path: "recipes/edit/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/edit/$id-KDX22QIR.js", imports: ["/build/_shared/chunk-7N7CRUXF.js", "/build/_shared/chunk-6E6SEABQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/search": { id: "routes/recipes/search", parentId: "root", path: "recipes/search", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/search-M7XARU6F.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-RF7OXWP4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-5VWXYFOC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "2f17d5c4", hmr: void 0, url: "/build/manifest-2F17D5C4.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-QRKREF2N.js", imports: ["/build/_shared/chunk-2LJ3HF3F.js", "/build/_shared/chunk-2ZC3NUNJ.js", "/build/_shared/chunk-G5WX4PPA.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NNXOWFA3.js", imports: ["/build/_shared/chunk-T6T2AEVA.js", "/build/_shared/chunk-X7KZMCHC.js", "/build/_shared/chunk-CIRPIAQD.js", "/build/_shared/chunk-APQ4DIHV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-K3LRGFVI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/menu/create": { id: "routes/menu/create", parentId: "root", path: "menu/create", index: void 0, caseSensitive: void 0, module: "/build/routes/menu/create-5SI5CAKA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/$id": { id: "routes/recipes/$id", parentId: "root", path: "recipes/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/$id-3QRVAZOL.js", imports: ["/build/_shared/chunk-FUCYWCFS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/create": { id: "routes/recipes/create", parentId: "root", path: "recipes/create", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/create-6OPPY22X.js", imports: ["/build/_shared/chunk-SU53JMIU.js", "/build/_shared/chunk-FUCYWCFS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/edit/$id": { id: "routes/recipes/edit/$id", parentId: "root", path: "recipes/edit/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/edit/$id-WKBDVCE4.js", imports: ["/build/_shared/chunk-SU53JMIU.js", "/build/_shared/chunk-FUCYWCFS.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/recipes/search": { id: "routes/recipes/search", parentId: "root", path: "recipes/search", index: void 0, caseSensitive: void 0, module: "/build/routes/recipes/search-PND4GMC4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-in/$": { id: "routes/sign-in/$", parentId: "root", path: "sign-in/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-in/$-TGGVW6FZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/sign-up/$": { id: "routes/sign-up/$", parentId: "root", path: "sign-up/*", index: void 0, caseSensitive: void 0, module: "/build/routes/sign-up/$-2SVZTUGY.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "9f6bc87d", hmr: void 0, url: "/build/manifest-9F6BC87D.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !1, v2_headers: !1, v2_meta: !1, v2_normalizeFormMethod: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -2610,13 +1419,8 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     module: routes_exports
   }
 };
+
+// server.js
+var server_default = (0, import_vercel.createRequestHandler)({ build: server_build_exports, mode: "production" });
 // Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  assets,
-  assetsBuildDirectory,
-  entry,
-  future,
-  publicPath,
-  routes
-});
-//# sourceMappingURL=index.js.map
+0 && (module.exports = {});
