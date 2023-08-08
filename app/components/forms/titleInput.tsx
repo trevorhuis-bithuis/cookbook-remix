@@ -20,7 +20,7 @@ export default function TitleInput(props: titleInputProps) {
           name="title"
           id="title"
           autoComplete="given-name"
-          className="block w-full p-2 rounded-md border-gray-300 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />

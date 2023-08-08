@@ -26,7 +26,7 @@ export default function StepsInput(props: StepsInputProps) {
 
   return (
     <div className="sm:col-span-6 ">
-      <p className="block text-md font-medium text-gray-700 mb-4">Steps</p>
+      <p className="text-md mb-4 block font-medium text-gray-700">Steps</p>
       {steps.map((step, index) => {
         return (
           <div className="my-2" key={index}>
@@ -42,7 +42,7 @@ export default function StepsInput(props: StepsInputProps) {
                   id="step"
                   name="step"
                   rows={2}
-                  className="block w-full rounded-md border-gray-300 p-2 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   value={step}
                   onChange={(e) => {
                     updateStep(index, e.target.value);
@@ -61,7 +61,7 @@ export default function StepsInput(props: StepsInputProps) {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -82,7 +82,7 @@ export default function StepsInput(props: StepsInputProps) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 border-2 border-indigo-700 rounded-md"
+          className="h-6 w-6 rounded-md border-2 border-indigo-700"
         >
           <path
             strokeLinecap="round"

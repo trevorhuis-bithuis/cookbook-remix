@@ -27,13 +27,13 @@ Would you like to work on Open Source software and help maintain this repository
 <details open>
 <summary><h2 style="display: inline-block; margin-left: 4px;">Table of contents</h2></summary>
 
-* [Overview](#overview)
-* [Demo](#demo)
-* [Getting started](#getting-started)
-* [Where the magic happens](#where-the-magic-happens)
-* [Documentation](#documentation)
-* [Deployment](#deployment-vercel)
-* [License info](#license)
+- [Overview](#overview)
+- [Demo](#demo)
+- [Getting started](#getting-started)
+- [Where the magic happens](#where-the-magic-happens)
+- [Documentation](#documentation)
+- [Deployment](#deployment-vercel)
+- [License info](#license)
 
 </details>
 

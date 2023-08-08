@@ -28,12 +28,12 @@ export default function IngredientsInput(props: ingredientsInputProps) {
 
   return (
     <div className="sm:col-span-6 ">
-      <p className="block text-md font-medium text-gray-700 mb-4">
+      <p className="text-md mb-4 block font-medium text-gray-700">
         Ingredients
       </p>
       {ingredients.map((ingredient, index) => {
         return (
-          <div className="flex my-2 md:w-1/2 w-full space-x-2" key={index}>
+          <div className="my-2 flex w-full space-x-2 md:w-1/2" key={index}>
             <div className="flex-1">
               <div>
                 <label
@@ -46,7 +46,7 @@ export default function IngredientsInput(props: ingredientsInputProps) {
                   <input
                     type="text"
                     name="ingredient"
-                    className="block w-full rounded-md border-gray-300 p-2 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="1/4 cup butter"
                     onChange={(e) => {
                       updateIngredient(index, e.target.value);
@@ -68,7 +68,7 @@ export default function IngredientsInput(props: ingredientsInputProps) {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="h-6 w-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -84,7 +84,7 @@ export default function IngredientsInput(props: ingredientsInputProps) {
 
       <button
         type="button"
-        className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         onClick={addIngredient}
       >
         Add

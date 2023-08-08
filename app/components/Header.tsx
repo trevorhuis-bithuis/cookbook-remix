@@ -12,14 +12,15 @@ interface HeaderProps {
 }
 
 const SigninLink = () => (
-  <Link to="/sign-in" className="hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
+  <Link
+    to="/sign-in"
+    className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700"
+  >
     Sign In
   </Link>
 );
 
-const AccountLink = () => (
-  <UserButton />
-);
+const AccountLink = () => <UserButton />;
 
 export default function Header(props: HeaderProps) {
   const navigation = useNavigation();
@@ -37,7 +38,6 @@ export default function Header(props: HeaderProps) {
     // },
   ];
 
-
   routes.push({
     name: "Create Recipe",
     href: "/recipes/create",
@@ -48,7 +48,6 @@ export default function Header(props: HeaderProps) {
   //   href: "/menus/create",
   //   current: navigation.location?.pathname === "/menus/create",
   // });
-
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -76,7 +75,7 @@ export default function Header(props: HeaderProps) {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-8 h-8 text-white"
+                      className="h-8 w-8 text-white"
                     >
                       <path
                         strokeLinecap="round"
@@ -96,7 +95,7 @@ export default function Header(props: HeaderProps) {
                           item.current
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -118,7 +117,7 @@ export default function Header(props: HeaderProps) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
+            <div className="space-y-1 px-2 pb-3 pt-2">
               {routes.map((item) => (
                 <Link
                   key={item.name}
@@ -127,7 +126,7 @@ export default function Header(props: HeaderProps) {
                     item.current
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   to={item.href}
                 >

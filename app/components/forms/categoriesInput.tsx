@@ -19,7 +19,7 @@ export default function CategoriesInput(props: categoriesInputProps) {
   };
 
   return (
-    <div className="sm:col-span-6 max-w-7xl">
+    <div className="max-w-7xl sm:col-span-6">
       <label
         htmlFor="location"
         className="block text-sm font-medium text-gray-700"
@@ -29,7 +29,7 @@ export default function CategoriesInput(props: categoriesInputProps) {
       <input
         type="text"
         name="category"
-        className="w-48 mt-1 rounded-md border-gray-300 p-2 border shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        className="mt-1 w-48 rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
         onChange={(e) => {
           setCategoryInput(e.target.value);
         }}
@@ -37,7 +37,7 @@ export default function CategoriesInput(props: categoriesInputProps) {
       />
       <button
         type="button"
-        className="inline-flex items-center mx-2 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="mx-2 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         onClick={() => {
           addCategory(categoryInput);
         }}
@@ -46,11 +46,11 @@ export default function CategoriesInput(props: categoriesInputProps) {
       </button>
 
       <div>
-        <ul role="list" className="flex flex-wrap m-2">
+        <ul role="list" className="m-2 flex flex-wrap">
           {categories.map((category, index) => (
             <li
               key={index}
-              className="relative flex-initial mr-4 mt-4 p-3 shadow-sm rounded-lg bg-indigo-100 text-md font-medium text-indigo-800 text-center"
+              className="text-md relative mr-4 mt-4 flex-initial rounded-lg bg-indigo-100 p-3 text-center font-medium text-indigo-800 shadow-sm"
             >
               <button>
                 <svg
@@ -59,7 +59,7 @@ export default function CategoriesInput(props: categoriesInputProps) {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="absolute w-6 h-6 -right-2 -top-2 bg-indigo-100 rounded-full"
+                  className="absolute -right-2 -top-2 h-6 w-6 rounded-full bg-indigo-100"
                   onClick={() => {
                     setCategories(
                       categories.filter((c) => {

@@ -1,6 +1,3 @@
-
-const CreateMenu = () => {
-
-}
+const CreateMenu = () => {};
 
 export default CreateMenu;

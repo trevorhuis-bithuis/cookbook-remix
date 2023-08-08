@@ -6,8 +6,6 @@
 app = "cookbook-remix"
 primary_region = "iad"
 
-[build]
-
 [env]
   PORT = "8080"
 

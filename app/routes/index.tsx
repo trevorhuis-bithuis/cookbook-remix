@@ -1,6 +1,6 @@
 import { Link } from "@remix-run/react";
-import recipeImage from "../images/recipe.png"
-import menuImage from "../images/menu.jpg"
+import recipeImage from "../images/recipe.png";
+import menuImage from "../images/menu.jpg";
 
 function Card({ title, description, image, url }: any) {
   return (
@@ -34,8 +34,8 @@ function Card({ title, description, image, url }: any) {
 const Home = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <p className="text-2xl text-center m-6">{`Crystal's Cooking`}</p>
-      <p className="text-md text-center m-6">
+      <p className="m-6 text-center text-2xl">{`Crystal's Cooking`}</p>
+      <p className="text-md m-6 text-center">
         Bacon ipsum dolor amet fatback swine cupim capicola tail. Kevin ball tip
         cupim meatloaf strip steak. Chislic pork chicken meatloaf beef
         tenderloin shankle tongue cow rump biltong filet mignon. Beef ribs
