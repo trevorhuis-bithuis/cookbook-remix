@@ -8,28 +8,17 @@ import {
   StepsInput,
   TitleInput,
 } from "~/components/forms";
-import { CheckIcon } from "@heroicons/react/24/outline";
-import { getAuth } from "@clerk/remix/ssr.server";
 import {
   type ActionArgs,
-  type LoaderArgs,
   type LoaderFunction,
+  type ActionFunction,
   redirect,
 } from "@remix-run/node";
-import { Form, useLoaderData, useSubmit } from "@remix-run/react";
-import { getRecipe, updateRecipe } from "~/models/recipe.server";
+import { Form, useSubmit } from "@remix-run/react";
+import { createRecipe } from "~/models/recipe.server";
 
-export const loader: LoaderFunction = async (args: LoaderArgs) => {
-  const { userId } = await getAuth(args);
-  if (!userId) {
-    return redirect("/sign-in");
-  }
-
-  const id = args.params.id as string;
-
-  const recipe = await getRecipe(id);
-
-  return recipe;
+export const loader: LoaderFunction = async (args) => {
+  return {};
 };
 
 interface FormRequestValues {
@@ -41,13 +30,11 @@ interface FormRequestValues {
   ingredients: string;
 }
 
-export async function action({ params, request }: ActionArgs) {
+export const action: ActionFunction = async ({ request }: ActionArgs) => {
   const formData = await request.formData();
   let values = Object.fromEntries(formData) as unknown as FormRequestValues;
-  const id = params.id as string;
 
-  await updateRecipe(
-    id,
+  const id = await createRecipe(
     values.title,
     values.description,
     values.ingredients.split(","),
@@ -57,28 +44,23 @@ export async function action({ params, request }: ActionArgs) {
   );
 
   return redirect(`/recipes/${id}`);
-}
+};
 
-const UpdateRecipe = () => {
-  const recipe = useLoaderData<typeof loader>();
+const CreateRecipe = () => {
   const submit = useSubmit();
 
-  const [title, setTitle] = useState<string>(recipe.title);
-  const [categories, setCategories] = useState<string[]>(
-    recipe.categories || []
-  );
-  const [description, setDescription] = useState<string>(recipe.description);
-  const [imageUrl, setImageUrl] = useState<string>(recipe.photoUrl);
-  const [ingredients, setIngredients] = useState<string[]>(
-    recipe.ingredients || []
-  );
-  const [steps, setSteps] = useState<string[]>(recipe.steps || []);
+  const [title, setTitle] = useState<string>("");
+  const [categories, setCategories] = useState<string[]>([]);
+  const [description, setDescription] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [ingredients, setIngredients] = useState<string[]>([""]);
+  const [steps, setSteps] = useState<string[]>([""]);
 
-  function handleCancel() {
+  const handleCancel = () => {
     console.log("cancel");
-  }
+  };
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let $form = event.currentTarget;
@@ -100,7 +82,7 @@ const UpdateRecipe = () => {
       method: $form.getAttribute("method") ?? $form.method,
       action: $form.getAttribute("action") ?? $form.action,
     });
-  }
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -139,13 +121,12 @@ const UpdateRecipe = () => {
 
           {imageUrl && (
             <div className="mx-auto items-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-                {/* @ts-expect-error Server Component */}
+              {/* <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <CheckIcon
                   className="h-6 w-6 text-green-600"
                   aria-hidden="true"
                 />
-              </div>
+              </div> */}
               <div className="mt-3 text-center sm:mt-5">Upload successful</div>
             </div>
           )}
@@ -166,4 +147,4 @@ const UpdateRecipe = () => {
 //         ingredients[0] !== ""
 //         ? false
 //         : true
-export default UpdateRecipe;
+export default CreateRecipe;

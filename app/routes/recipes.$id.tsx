@@ -38,7 +38,7 @@ export const action: ActionFunction = async ({
   return redirect(`/recipes/${id}`);
 };
 
-export default function Recipe() {
+const Recipe = () => {
   let recipe = useLoaderData();
 
   const [openDelete, setOpenDelete] = useState<boolean>(false);
@@ -106,7 +106,6 @@ export default function Recipe() {
         ))}
       </ol>
       <div className="flex">
-        {/* @ts-expect-error Server Component */}
         <Link
           className="m-2 inline-flex items-center rounded-md border border-transparent bg-gray-400 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           to={`/recipes/edit/${recipe._id}`}
@@ -130,4 +129,6 @@ export default function Recipe() {
       </Form>
     </div>
   );
-}
+};
+
+export default Recipe;

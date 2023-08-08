@@ -8,21 +8,22 @@ import {
   StepsInput,
   TitleInput,
 } from "~/components/forms";
-import { getAuth } from "@clerk/remix/ssr.server";
+import { CheckIcon } from "@heroicons/react/24/outline";
 import {
   type ActionArgs,
+  type LoaderArgs,
   type LoaderFunction,
+  type ActionFunction,
   redirect,
 } from "@remix-run/node";
-import { Form, useSubmit } from "@remix-run/react";
-import { createRecipe } from "~/models/recipe.server";
+import { Form, useLoaderData, useSubmit } from "@remix-run/react";
+import { getRecipe, updateRecipe } from "~/models/recipe.server";
 
-export const loader: LoaderFunction = async (args) => {
-  const { userId } = await getAuth(args);
-  if (!userId) {
-    return redirect("/sign-in");
-  }
-  return { userId };
+export const loader: LoaderFunction = async (args: LoaderArgs) => {
+  const id = args.params.id as string;
+  const recipe = await getRecipe(id);
+
+  return recipe;
 };
 
 interface FormRequestValues {
@@ -34,11 +35,16 @@ interface FormRequestValues {
   ingredients: string;
 }
 
-export async function action({ request }: ActionArgs) {
+export const action: ActionFunction = async ({
+  params,
+  request,
+}: ActionArgs) => {
   const formData = await request.formData();
   let values = Object.fromEntries(formData) as unknown as FormRequestValues;
+  const id = params.id as string;
 
-  const id = await createRecipe(
+  await updateRecipe(
+    id,
     values.title,
     values.description,
     values.ingredients.split(","),
@@ -48,17 +54,22 @@ export async function action({ request }: ActionArgs) {
   );
 
   return redirect(`/recipes/${id}`);
-}
+};
 
-const CreateRecipe = () => {
+const UpdateRecipe = () => {
+  const recipe = useLoaderData<typeof loader>();
   const submit = useSubmit();
 
-  const [title, setTitle] = useState<string>("");
-  const [categories, setCategories] = useState<string[]>([]);
-  const [description, setDescription] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [ingredients, setIngredients] = useState<string[]>([""]);
-  const [steps, setSteps] = useState<string[]>([""]);
+  const [title, setTitle] = useState<string>(recipe.title);
+  const [categories, setCategories] = useState<string[]>(
+    recipe.categories || []
+  );
+  const [description, setDescription] = useState<string>(recipe.description);
+  const [imageUrl, setImageUrl] = useState<string>(recipe.photoUrl);
+  const [ingredients, setIngredients] = useState<string[]>(
+    recipe.ingredients || []
+  );
+  const [steps, setSteps] = useState<string[]>(recipe.steps || []);
 
   function handleCancel() {
     console.log("cancel");
@@ -125,12 +136,12 @@ const CreateRecipe = () => {
 
           {imageUrl && (
             <div className="mx-auto items-center">
-              {/* <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <CheckIcon
                   className="h-6 w-6 text-green-600"
                   aria-hidden="true"
                 />
-              </div> */}
+              </div>
               <div className="mt-3 text-center sm:mt-5">Upload successful</div>
             </div>
           )}
@@ -151,4 +162,4 @@ const CreateRecipe = () => {
 //         ingredients[0] !== ""
 //         ? false
 //         : true
-export default CreateRecipe;
+export default UpdateRecipe;

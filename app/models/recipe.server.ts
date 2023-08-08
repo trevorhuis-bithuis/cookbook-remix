@@ -2,14 +2,26 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { buildConfig } from "~/utils/db.server";
 
-async function createRecipe(
+type Recipe = {
+  id: string;
+  title: string;
+  description?: string;
+  ingredients: string[];
+  steps: string[];
+  categories?: string[];
+  photo?: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+const createRecipe = async (
   title: string,
   description: string,
   ingredients: string[],
   steps: string[],
   categories: string[],
   photoUrl: string
-) {
+) => {
   const action = "insertOne";
   const document = {
     title,
@@ -26,10 +38,8 @@ async function createRecipe(
   const result = await axios(config);
 
   return result.data.insertedId;
-}
-
-// update recipe
-async function updateRecipe(
+};
+const updateRecipe = async (
   id: string,
   title: string,
   description: string,
@@ -37,7 +47,7 @@ async function updateRecipe(
   steps: string[],
   categories: string[],
   photoUrl: string
-) {
+) => {
   const action = "updateOne";
   const filter = {
     _id: { $oid: id },
@@ -58,9 +68,9 @@ async function updateRecipe(
   const result = await axios(config);
 
   return result.data.modifiedCount;
-}
+};
 
-async function getRecipe(id: string) {
+const getRecipe = async (id: string) => {
   const action = "findOne";
   const filter = {
     _id: { $oid: id },
@@ -73,9 +83,9 @@ async function getRecipe(id: string) {
     ...result.data.document,
     createdAt: dayjs(result.data.document.createdAt).format("MMMM DD, YYYY"),
   };
-}
+};
 
-async function deleteRecipe(id: string) {
+const deleteRecipe = async (id: string) => {
   const action = "deleteOne";
   const filter = {
     _id: { $oid: id },
@@ -85,6 +95,86 @@ async function deleteRecipe(id: string) {
   const result = await axios(config);
 
   return result.data.deletedCount;
-}
+};
 
-export { createRecipe, updateRecipe, getRecipe, deleteRecipe };
+const getRecipes = async (skip: number) => {
+  const action = "find";
+  const sort = { title: 1, _id: 1 };
+
+  const config = buildConfig({ action, sort, skip, limit: 8 });
+  const result = await axios(config);
+
+  return result.data.documents;
+};
+
+const getRecipeCount = async () => {
+  const action = "aggregate";
+  const pipeline = [
+    {
+      $count: "recipeCount",
+    },
+  ];
+  const config = buildConfig({ action, pipeline });
+  const result = await axios(config);
+
+  return result.data.documents[0].recipeCount;
+};
+
+const getCategories = async () => {
+  const action = "aggregate";
+  const pipeline = [
+    {
+      $group: {
+        _id: null,
+        categories: { $addToSet: "$categories" },
+      },
+    },
+  ];
+  const config = buildConfig({ action, pipeline });
+  const result = await axios(config);
+
+  return result.data.documents[0].categories[0];
+};
+
+const searchRecipes = async (
+  search: string,
+  category: string,
+  skip: number
+) => {
+  const action = "aggregate";
+  const sort = { title: 1, _id: 1 };
+  const pipeline = [
+    {
+      $search: {
+        index: "default",
+        text: {
+          query: search,
+          path: {
+            wildcard: "*",
+          },
+        },
+        sort,
+        count: {
+          type: "total",
+        },
+      },
+    },
+  ];
+
+  const config = buildConfig({ action, pipeline, skip, category });
+  const result = await axios(config);
+
+  return result.data.documents;
+};
+
+export {
+  createRecipe,
+  updateRecipe,
+  getRecipe,
+  deleteRecipe,
+  getRecipes,
+  getRecipeCount,
+  getCategories,
+  searchRecipes,
+  type Recipe,
+};

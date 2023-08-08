@@ -1,9 +1,8 @@
-import type { User } from "../types";
 import bcrypt from "bcryptjs";
 import axios from "axios";
 import dayjs from "dayjs";
 
-function buildUserConfig({ action, document = null, filter = null }: any) {
+const buildUserConfig = ({ action, document = null, filter = null }: any) => {
   let config: any = {
     method: "post",
     url: `${process.env.DATA_API_BASE_URL}/action/${action}`,
@@ -23,9 +22,9 @@ function buildUserConfig({ action, document = null, filter = null }: any) {
   if (filter) config.data.filter = filter;
 
   return config;
-}
+};
 
-export async function getUserById(id: User["id"]) {
+const getUserById = async (id: User["id"]) => {
   const action = "findOne";
   const filter = {
     _id: { $oid: id },
@@ -38,9 +37,9 @@ export async function getUserById(id: User["id"]) {
     ...result.data.document,
     createdAt: dayjs(result.data.document.createdAt).format("MMMM DD, YYYY"),
   };
-}
+};
 
-export async function getUserByEmail(email: User["email"]) {
+const getUserByEmail = async (email: User["email"]) => {
   const action = "findOne";
   const filter = {
     email: { email: email },
@@ -53,9 +52,9 @@ export async function getUserByEmail(email: User["email"]) {
     ...result.data.document,
     createdAt: dayjs(result.data.document.createdAt).format("MMMM DD, YYYY"),
   };
-}
+};
 
-export async function createUser(email: User["email"], password: string) {
+const createUser = async (email: User["email"], password: string) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const action = "insertOne";
@@ -70,9 +69,9 @@ export async function createUser(email: User["email"], password: string) {
   const result = await axios(config);
 
   return result.data.insertedId;
-}
+};
 
-export async function deleteUserByEmail(email: User["email"]) {
+const deleteUserByEmail = async (email: User["email"]) => {
   const action = "deleteOne";
   const filter = {
     email: { email: email },
@@ -82,12 +81,12 @@ export async function deleteUserByEmail(email: User["email"]) {
   const result = await axios(config);
 
   return result.data.deletedCount;
-}
+};
 
-export async function verifyLogin(
+const verifyLogin = async (
   email: User["email"],
   password: User["password"]
-) {
+) => {
   const userWithPassword = await getUserByEmail(email);
 
   if (!userWithPassword || !userWithPassword.password) {
@@ -106,4 +105,20 @@ export async function verifyLogin(
   const { password: _password, ...userWithoutPassword } = userWithPassword;
 
   return userWithoutPassword;
-}
+};
+
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export {
+  verifyLogin,
+  deleteUserByEmail,
+  createUser,
+  getUserByEmail,
+  getUserById,
+};
