@@ -11,13 +11,13 @@ import {
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { getAuth } from "@clerk/remix/ssr.server";
 import {
-  ActionArgs,
-  LoaderArgs,
-  LoaderFunction,
+  type ActionArgs,
+  type LoaderArgs,
+  type LoaderFunction,
   redirect,
 } from "@remix-run/node";
 import { Form, useLoaderData, useSubmit } from "@remix-run/react";
-import { getRecipe, updateRecipe } from "~/utils/db.server";
+import { getRecipe, updateRecipe } from "~/models/recipe.server";
 
 export const loader: LoaderFunction = async (args: LoaderArgs) => {
   const { userId } = await getAuth(args);
@@ -73,7 +73,6 @@ const UpdateRecipe = () => {
     recipe.ingredients || []
   );
   const [steps, setSteps] = useState<string[]>(recipe.steps || []);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function handleCancel() {
     console.log("cancel");
@@ -141,6 +140,7 @@ const UpdateRecipe = () => {
           {imageUrl && (
             <div className="mx-auto items-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                {/* @ts-expect-error Server Component */}
                 <CheckIcon
                   className="h-6 w-6 text-green-600"
                   aria-hidden="true"

@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 type searchBarProps = {
   setSearchText: (searchText: string) => void;
   page: number;

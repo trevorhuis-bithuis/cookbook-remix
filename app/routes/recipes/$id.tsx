@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import {
-  ActionArgs,
-  ActionFunction,
-  redirect,
+  type ActionArgs,
+  type ActionFunction,
   type LoaderFunction,
-  LoaderArgs,
+  type LoaderArgs,
+  redirect,
 } from "@remix-run/node";
 import { Form, Link, useLoaderData } from "@remix-run/react";
-import { getRecipe, deleteRecipe } from "~/utils/db.server";
+import { getRecipe, deleteRecipe } from "~/models/recipe.server";
 
 import DeleteRecipeModal from "~/components/deleteModal";
 import { useState } from "react";
@@ -27,7 +27,7 @@ export const action: ActionFunction = async ({
   const id = params.id as string;
 
   const formData = await request.formData();
-  let { _action, ...values } = Object.fromEntries(formData);
+  let { _action } = Object.fromEntries(formData);
 
   if (_action === "_delete") {
     await deleteRecipe(id);
@@ -106,6 +106,7 @@ export default function Recipe() {
         ))}
       </ol>
       <div className="flex">
+        {/* @ts-expect-error Server Component */}
         <Link
           className="m-2 inline-flex items-center rounded-md border border-transparent bg-gray-400 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           to={`/recipes/edit/${recipe._id}`}

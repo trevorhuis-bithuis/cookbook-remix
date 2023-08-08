@@ -8,11 +8,14 @@ import {
   StepsInput,
   TitleInput,
 } from "~/components/forms";
-import { CheckIcon } from "@heroicons/react/24/outline";
 import { getAuth } from "@clerk/remix/ssr.server";
-import { ActionArgs, LoaderFunction, redirect } from "@remix-run/node";
-import { Form, useLoaderData, useSubmit } from "@remix-run/react";
-import { createRecipe } from "~/utils/db.server";
+import {
+  type ActionArgs,
+  type LoaderFunction,
+  redirect,
+} from "@remix-run/node";
+import { Form, useSubmit } from "@remix-run/react";
+import { createRecipe } from "~/models/recipe.server";
 
 export const loader: LoaderFunction = async (args) => {
   const { userId } = await getAuth(args);
@@ -48,7 +51,6 @@ export async function action({ request }: ActionArgs) {
 }
 
 const CreateRecipe = () => {
-  const { userId } = useLoaderData<typeof loader>();
   const submit = useSubmit();
 
   const [title, setTitle] = useState<string>("");
@@ -57,7 +59,6 @@ const CreateRecipe = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [ingredients, setIngredients] = useState<string[]>([""]);
   const [steps, setSteps] = useState<string[]>([""]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function handleCancel() {
     console.log("cancel");
@@ -124,12 +125,12 @@ const CreateRecipe = () => {
 
           {imageUrl && (
             <div className="mx-auto items-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+              {/* <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
                 <CheckIcon
                   className="h-6 w-6 text-green-600"
                   aria-hidden="true"
                 />
-              </div>
+              </div> */}
               <div className="mt-3 text-center sm:mt-5">Upload successful</div>
             </div>
           )}

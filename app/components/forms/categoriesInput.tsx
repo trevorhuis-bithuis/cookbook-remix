@@ -46,7 +46,7 @@ export default function CategoriesInput(props: categoriesInputProps) {
       </button>
 
       <div>
-        <ul role="list" className="m-2 flex flex-wrap">
+        <ul className="m-2 flex flex-wrap">
           {categories.map((category, index) => (
             <li
               key={index}

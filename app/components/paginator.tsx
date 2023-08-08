@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 type paginatorProps = {
   length: number;
   page: number;

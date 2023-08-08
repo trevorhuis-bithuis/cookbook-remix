@@ -1,4 +1,8 @@
-import { ActionArgs, ActionFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  ActionArgs,
+  ActionFunction,
+  LoaderFunction,
+} from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import Paginator from "~/components/paginator";
